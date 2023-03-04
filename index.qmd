@@ -1,8 +1,152 @@
 ---
-title: "Template Revealjs Quarto site"
-format: revealjs
+title: "TopoStats Tutorial : Virtual Environments & Git Branches"
+author: "Neil Shephard"
+email: "n.shephard@sheffield.ac.uk"
+from: markdown+emoji
+format:
+  revealjs:
+    theme: sky
+    slide-number: true
+    show-slide-number: speaker
+    # embed-resources: true
+    # standalone: true
+footer: "[**ns-rse.github.io/topostats-tutorial/**](https://ns-rse.github.io/topostats-tutorial/#/title-slide)"
 ---
 
-This is a Quarto website.
+## View these slides...
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+{{< qrcode https://ns-rse.github.io/topostats-tutorial qr1 width=400 height=400 >}}
+
+[**https://ns-rse.github.io/topostats-tutorial**](https://ns-rse.github.io/topostats-tutorial)
+
+::: {.notes}
+:::
+
+
+## Introduction
+
++ TopoStats _has_ undergone significant revision.
++ Versioned releases available via PyPI
++ TopoStats is _still_ undergoing significant development.
++ Available via GitHub.
++ User feedback is _really, really_ important.
+  + Bugs! When things break.
+  + Features - New functionality.
+
+::: {.notes}
+TopoStats has undergone significant revision and is, we hope, significantly easier to use these days. Its easy to
+install via PyPI as we make versioned releases there, but there is on-going development to refine image processing under
+the hood and add more features and flexibility. These features are, until a new version is released, only available if
+TopoStats is installed via GitHub.
+
+It is really useful for developers to have feedback early on in the development cycle as it helps identify "bugs" where
+things aren't working as expected and as a source of new functionality which can be incorporated.
+:::
+
+## Content
+
++ Installing Conda for Python Virtual Environments.
++ Installing GitKraken for cloning TopoStats GitHub repository.
++ Installing TopoStats from clone repository.
++ Switching branches and testing.
++ Reporting issues.
+
+## Python Virtual Environments
+
+Comprehensive : [Introduction to Conda for (Data)
+Scientists](https://rse.shef.ac.uk/introduction-to-conda-for-data-scientists/)
+
++ Command line programmes are searched for in order.
++ A "virtual environments" is an isolated set of commands that take precedence over system commands.
++ You can have multiple virtual environments and switch between them.
+
+## Install Conda
+
+Recommend [Miniconda](https://docs.conda.io/en/latest/miniconda.html), comes with Python which is all that is required.
+
++ [Linux](https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh)
++ [Windows (64-bit)](https://repo.anaconda.com/miniconda/Miniconda3-latest-Windows-x86_64.exe)
++ [OSX (Intel)](https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.pkg)
++ [OSX (M1)](https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-arm64.pkg)
+
+::: {.notes}
+
+:::
+
+## Create Virtual Environment
+
+``` {.bash}
+conda create --name topostats-git python=3.10
+```
+
+## Version Control...a digression
+
+Comprehensive [Git, GitHub and GitKraken : From Zero to Hero](https://srse-git-github-zero2hero.netlify.app/).
+
+::: {.notes}
+I would recommend taking the Git, GitHub and GitKraken : From Zero to Hero course that the Research Software Engineering
+team deliver on a regular basis. It is the sort of course I wish I had taken when I started out using Git as it covers
+the basics of version control and then moves onto collaborative work and how to use GitHub to report Issues and
+then dealing with some of the problems that might arise when working on code collabotatively. Some of these aspects
+aren't necessary for what we are covering today but I feel they are useful to be aware of so I'd encourage you to take
+the course.
+
+That said we're going to make a lightening digression into version control, what it is, why it matters to TopoStats
+development and how it impacts testing new features.
+:::
+
+
+## Getting Started with Git
+
++ Setup GitHub account ([https://github.com](https://github.com)) using University email address.
++ Download and install  [GitKraken](https://www.gitkraken.com/) using GitHub account associated with University email
+  address.
+
+
+## Getting Started with Git (_cont._)
+
++
+<!-- ::: {.scrollable} -->
+<!-- ## <CONTENT> -->
+<!-- ::: -->
+
+<!-- ::: {.notes} -->
+<!-- <NOTES> -->
+<!-- ::: -->
+
+
+
+<!-- <\!-- Slide templates -\-> -->
+
+<!-- ::: {.scrollable} -->
+<!-- ## <TITLE> -->
+
+<!-- <CONTENT> -->
+<!-- ::: -->
+
+<!-- ::: {.notes} -->
+<!-- <NOTES> -->
+<!-- ::: -->
+
+
+<!-- :::: {.columns} -->
+
+<!-- ::: {.scrollable} -->
+<!-- ## <TWO COLUMNS> -->
+<!-- ::: {.column width="50%"} -->
+
+<!-- **COLUMN1** -->
+
+<!-- ::: -->
+
+<!-- ::: {.column width="50%"} -->
+<!-- **COLUMN2** -->
+
+<!-- ::: -->
+
+<!-- :::: -->
+
+<!-- ::: -->
+<!-- ::: {.notes} -->
+<!-- <NOTES> -->
+<!-- ::: -->
