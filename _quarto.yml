@@ -2,8 +2,6 @@ project:
   type: website
 
 website:
-  title: "Template quarto revealjs project"
-  site-url: https://sparrow0hawk.github.io/template-revealjs-quarto
-  description: "Template site for revealjs with quarto"
-
-
+  title: "TopoStats Tutorial"
+  site-url: https://ns-rse.github.io/topostats-tutorial
+  description: "Crash course in using development version of TopoStats"
