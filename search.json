@@ -95,7 +95,7 @@
     "href": "index.html#installing-topostats-under-virtual-environments-1",
     "title": "TopoStats Tutorial : Virtual Environments & Git Branches",
     "section": "Installing TopoStats under Virtual Environments",
-    "text": "Installing TopoStats under Virtual Environments\ncd ~/tmp/topostats-tutorial/TopoStats\nwhich python\ncond activate topostats-git\ngit status\npip install -e .\nrun_topostats -h"
+    "text": "Installing TopoStats under Virtual Environments\ncd ~/tmp/topostats-tutorial/TopoStats\nwhich python\ncond activate topostats-git\ngit status\npip install -e .  # Install additional requirements e.g. .[tests]\nrun_topostats -h"
   },
   {
     "objectID": "index.html#run_topostats--h",
@@ -173,6 +173,20 @@
     "title": "TopoStats Tutorial : Virtual Environments & Git Branches",
     "section": "GitHub - Reporting Issues (cont.)",
     "text": "GitHub - Reporting Issues (cont.)\n\nDescribe the bug.\nInclude the configuration file.\nCopy of the output.\nExact command that failed.\nTopoStats version\nOperating System and Python Version\nOptional Python packages that are installed.\n\n\nYou are asked to tick off various tasks as completed and there is a section for each describing in a bit more detail how to complete it and with a Markdown code section to paste the output.\nYou are asked to describe the bug, although typically most of this information is covered in the subsequent sections in greater detail.\nYou are asked to paste a copy of your YAML configuration file rather than taking a picture of it. Its much more useful to paste such content because a screenshot does not allow anyone investigating the problem to copy, paste and reuse.\nA copy of the output is then requested to be pasted in, this should include as much information as possible about the failure.\nThe exact command used, typically I would expect this to be run_topostats --config_file <your_config>.yaml\nThen the TopoStats command, the operating system and Python version and finally, optionally the full Python environment with all package versions included."
+  },
+  {
+    "objectID": "index.html#exercise-1---tests",
+    "href": "index.html#exercise-1---tests",
+    "title": "TopoStats Tutorial : Virtual Environments & Git Branches",
+    "section": "Exercise 1 - Tests",
+    "text": "Exercise 1 - Tests\n\nCreate a new Conda environment called test.\nCheckout topostats-test branch.\nInstall TopoStats and include the test dependencies.\nRun the test suite with pytest"
+  },
+  {
+    "objectID": "index.html#exercise-2---surprise",
+    "href": "index.html#exercise-2---surprise",
+    "title": "TopoStats Tutorial : Virtual Environments & Git Branches",
+    "section": "Exercise 2 - Surprise",
+    "text": "Exercise 2 - Surprise\n\nCreate a new Conda environment called surpriste.\nCheckout topostats-surprirse branch.\nInstall TopoStats.\nRun TopoStats."
   },
   {
     "objectID": "index.html#any-questions",

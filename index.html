@@ -404,7 +404,7 @@ Neil Shephard
 <h2>View these slides…</h2>
 <div id="qr1" class="qrcode"></div>
 <script type="text/javascript">
-var qrcode = new QRCode("qr1", {"colorLight":"#ffffff","text":"https://ns-rse.github.io/topostats-tutorial","width":"400","colorDark":"#000000","height":"400"});
+var qrcode = new QRCode("qr1", {"text":"https://ns-rse.github.io/topostats-tutorial","width":"400","height":"400","colorDark":"#000000","colorLight":"#ffffff"});
 </script>
     
 <p><a href="https://ns-rse.github.io/topostats-tutorial"><strong>https://ns-rse.github.io/topostats-tutorial</strong></a></p>
@@ -692,13 +692,14 @@ var qrcode = new QRCode("qr1", {"colorLight":"#ffffff","text":"https://ns-rse.gi
 <span id="cb2-2"><a href="#cb2-2"></a><span class="fu">which</span> python</span>
 <span id="cb2-3"><a href="#cb2-3"></a><span class="ex">cond</span> activate topostats-git</span>
 <span id="cb2-4"><a href="#cb2-4"></a><span class="fu">git</span> status</span>
-<span id="cb2-5"><a href="#cb2-5"></a><span class="ex">pip</span> install <span class="at">-e</span> .</span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="ex">pip</span> install <span class="at">-e</span> .  <span class="co"># Install additional requirements e.g. .[tests]</span></span>
 <span id="cb2-6"><a href="#cb2-6"></a><span class="ex">run_topostats</span> <span class="at">-h</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <aside class="notes">
 <p>Check you have activated your Conda environment if not activate it.</p>
 <p>Use <code>git status</code> and check that you are on the <code>main</code> branch its shown on the first line of output.</p>
 <p>Now install TopoStats with the command <code>pip install -e .</code> and it should start downloading a bunch of packages that TopoStats depends on then install all of them. The <code>.</code> means to install from the current directory whilst the <code>-e</code> flag tells Pip to install the package in what is known as “editable” format, and so rather than copying the files to a location under your virtual environment they are referenced from the current location.</p>
+<p>There are additional requirements that can be installed, for example if you wanted to include the dependencies require for running tests you would use <code>.[tests]</code>.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1114,6 +1115,24 @@ var qrcode = new QRCode("qr1", {"colorLight":"#ffffff","text":"https://ns-rse.gi
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
+</section>
+<section id="exercise-1---tests" class="slide level2">
+<h2>Exercise 1 - Tests</h2>
+<ol type="1">
+<li class="fragment">Create a new Conda environment called <code>test</code>.</li>
+<li class="fragment">Checkout <code>topostats-test</code> branch.</li>
+<li class="fragment">Install TopoStats and include the test dependencies.</li>
+<li class="fragment">Run the test suite with <code>pytest</code></li>
+</ol>
+</section>
+<section id="exercise-2---surprise" class="slide level2">
+<h2>Exercise 2 - Surprise</h2>
+<ol type="1">
+<li class="fragment">Create a new Conda environment called <code>surpriste</code>.</li>
+<li class="fragment">Checkout <code>topostats-surprirse</code> branch.</li>
+<li class="fragment">Install TopoStats.</li>
+<li class="fragment">Run TopoStats.</li>
+</ol>
 </section>
 <section id="any-questions" class="slide level2">
 <h2>Any Questions?</h2>
