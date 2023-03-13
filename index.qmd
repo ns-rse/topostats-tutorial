@@ -5,12 +5,16 @@ email: "n.shephard@sheffield.ac.uk"
 from: markdown+emoji
 format:
   revealjs:
-    theme: sky
+    incremental: true
+    theme: night
     slide-number: true
     show-slide-number: speaker
     # embed-resources: true
     # standalone: true
 footer: "[**ns-rse.github.io/topostats-tutorial/**](https://ns-rse.github.io/topostats-tutorial/#/title-slide)"
+project:
+  port: 7864
+  host: localhost
 ---
 
 ## View these slides...
@@ -25,98 +29,544 @@ footer: "[**ns-rse.github.io/topostats-tutorial/**](https://ns-rse.github.io/top
 
 ## Introduction
 
-+ TopoStats _has_ undergone significant revision.
++ TopoStats has undergone significant revision.
 + Versioned releases available via PyPI
 + TopoStats is _still_ undergoing significant development.
-+ Available via GitHub.
-+ User feedback is _really, really_ important.
-  + Bugs! When things break.
-  + Features - New functionality.
++ Also available via GitHub.
 
 ::: {.notes}
 TopoStats has undergone significant revision and is, we hope, significantly easier to use these days. Its easy to
 install via PyPI as we make versioned releases there, but there is on-going development to refine image processing under
 the hood and add more features and flexibility. These features are, until a new version is released, only available if
 TopoStats is installed via GitHub.
+:::
 
-It is really useful for developers to have feedback early on in the development cycle as it helps identify "bugs" where
-things aren't working as expected and as a source of new functionality which can be incorporated.
+::: {.incremental}
+## Introduction (_cont._)
+
++ User feedback is _really, really_ important.
+  + Bugs! When things break.
+  + Features - New functionality.
++ Best to capture bugs/issues early in development cycle _before_ PyPI releases
+
+:::
+
+::: {.notes}
+It is really useful for developers to have feedback as it helps identify "bugs" where things aren't working as expected
+and as a source of new functionality which can be incorporated.
+
+Ideally it is preferable to have that feedback earlier in the development cycle _before_ releases are made to PyPI.
+
 :::
 
 ## Content
 
-+ Installing Conda for Python Virtual Environments.
-+ Installing GitKraken for cloning TopoStats GitHub repository.
-+ Installing TopoStats from clone repository.
++ Python Virtual Environments (Conda).
++ GitKraken for cloning TopoStats GitHub repository.
++ Installing TopoStats from cloned repository in Virtual Environment.
 + Switching branches and testing.
 + Reporting issues.
 
 ## Python Virtual Environments
 
-Comprehensive : [Introduction to Conda for (Data)
++ Comprehensive : [Introduction to Conda for (Data)
 Scientists](https://rse.shef.ac.uk/introduction-to-conda-for-data-scientists/)
++ Recommend [Miniconda](https://docs.conda.io/en/latest/miniconda.html), comes with Python which is all that is required.
+  + [Linux](https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh)
+  + [Windows (64-bit)](https://repo.anaconda.com/miniconda/Miniconda3-latest-Windows-x86_64.exe)
+  + [OSX (Intel)](https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.pkg)
+  + [OSX (M1)](https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-arm64.pkg)
 
-+ Command line programmes are searched for in order.
-+ A "virtual environments" is an isolated set of commands that take precedence over system commands.
+:::  {.notes}
+You've hopefully all managed to go through the Setup instructions from the _Introduction to Conda for (Data) Scientists_
+and have installed Miniconda on your computers.
+
+We recommend Miniconda as its a minimal install that includes Python. If you've not there are direct links to install
+here.
+:::
+
+## Command Line Environments
+
++ Command line programmes are searched for in order looking along the paths in `$PATH`.
++ A "virtual environment" is an isolated set of commands that take precedence over system commands.
 + You can have multiple virtual environments and switch between them.
 
-## Install Conda
-
-Recommend [Miniconda](https://docs.conda.io/en/latest/miniconda.html), comes with Python which is all that is required.
-
-+ [Linux](https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh)
-+ [Windows (64-bit)](https://repo.anaconda.com/miniconda/Miniconda3-latest-Windows-x86_64.exe)
-+ [OSX (Intel)](https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.pkg)
-+ [OSX (M1)](https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-arm64.pkg)
-
 ::: {.notes}
+When you're using a command line environment programmes are searched for in order along the paths stored in a special
+variable known as `PATH`. A virtual environment is an isolated set of commands that take precedence over system commands
+and they do this by modifying the `PATH` variable. Its possible to have multiple virtual environments installed and
+switch between them, doing so changes which environment is listed first in your `PATH`.
+:::
+
+::: {.incremental}
+
+## Create and Activate Virtual Environment
+
+``` {.bash code-line-numbers="|1|2|3|4|5|6"}
+echo $PATH    # Locations programmes are searched for BEFORE
+which python  # Show version of python used BEFORE
+conda create --name topostats-git python=3.10
+conda activate topostats-git
+echo $PATH    # Show locations programmes are searched for AFTER
+which python  # Show version of python used AFTER
+```
 
 :::
 
-## Create Virtual Environment
+::: {.notes}
+We're now going to create a virtual environment, but first if you type `echo $PATH` it will show you the location
+programmes are searched for, these are delimited by colons.
 
-``` {.bash}
-conda create --name topostats-git python=3.10
-```
+If you type `which python` or in Windows `where.exe python` it will show you which version of Python will be invoked.
 
-## Version Control...a digression
+You can now create a virtual environment using `conda create --name topostats-git python=3.10` this creates a new
+environment called `topostats-git` and ensure Python version 3.10 is installed within it. But its not activated yet, as
+the output show, and to activate it you need to type `conda activate topostats-git`.
+
+Once activated you can repeat the commands, and I would recommend getting in the habit of using the up-arrow to go back
+through your command history rather than retyping commands, to `echo $PATH` and you should see the first thing listed is
+the path to the `topostats-git` Miniconda environment.
+
+If you now type `which python` or in Windows `where.exe python` it should point to a Python executable that is within
+the Miniconda environment we have just created.
+:::
+
+## Virtual Environments
+
+![](./img/python-virtual-envs.png)
+
+::: {.notes}
+This is a simple graphical overview of how you can have multiple virtual environments co-existing within each
+other.
+
+There are three environments each with different versions of Python installed, although you should _never_ use Python
+2.7 these days. Within each environment there are different Python packages installed, 1 has Python 2.7 along with Numpy
+1.14.4 and Matplotlib 2.2.5. 2 Python 3.6 along with the packages Pandas 1.0.1 and PySpark 2.4.8. 3 has Python 3.10 and
+the package Pandas 1.3.5 and Matplotlib 3.5.1.
+
+These all work in isolation, it just depedns which one has been activated.
+
+:::
+
+## Version Control... a digression
 
 Comprehensive [Git, GitHub and GitKraken : From Zero to Hero](https://srse-git-github-zero2hero.netlify.app/).
 
-::: {.notes}
-I would recommend taking the Git, GitHub and GitKraken : From Zero to Hero course that the Research Software Engineering
-team deliver on a regular basis. It is the sort of course I wish I had taken when I started out using Git as it covers
-the basics of version control and then moves onto collaborative work and how to use GitHub to report Issues and
-then dealing with some of the problems that might arise when working on code collabotatively. Some of these aspects
-aren't necessary for what we are covering today but I feel they are useful to be aware of so I'd encourage you to take
-the course.
-
-That said we're going to make a lightening digression into version control, what it is, why it matters to TopoStats
-development and how it impacts testing new features.
-:::
-
-
-## Getting Started with Git
+Hopefully you have already...
 
 + Setup GitHub account ([https://github.com](https://github.com)) using University email address.
 + Download and install  [GitKraken](https://www.gitkraken.com/) using GitHub account associated with University email
   address.
 
+::: {.notes}
+The Research Software Engineering group run a comprehensive Git, GitHub and GitKraken course on a regular basis and I
+would highly recommend taking it (but then I would as I help run it!)
 
-## Getting Started with Git (_cont._)
+It is the sort of course I wish I had taken when I started out using Git as it covers the basics of version control and
+then moves onto collaborative work and how to use GitHub to report Issues and dealing with some of the problems that
+might arise when working on code collabotatively.
 
-+
-<!-- ::: {.scrollable} -->
-<!-- ## <CONTENT> -->
-<!-- ::: -->
+Some of these aspects aren't necessary for what we are covering today but I feel they are useful to be aware of so I'd
+encourage you to take the course.
 
-<!-- ::: {.notes} -->
-<!-- <NOTES> -->
-<!-- ::: -->
+Hopefully you have already setup a GitHub account and installed GitKarken.
+
+That said we're going to make a lightening digression into version control, what it is, why it matters to TopoStats
+development and how it impacts testing new features.
+:::
+
+## Getting Started with Git, GitHub and GitKraken
+
++ Git is a programme that runs on your computer.
++ GitHub is an online service which hosts software projects and facilitates...
+  + Distributed software development
+  + Tracking bugs/features
+  + Project management
++ GitKraken is a client that interfaces to Git and GitHub and communicates between the two.
 
 
+::: {.notes}
+Its important to make a distinction between Git, GitHub and GitKraken.
 
-<!-- <\!-- Slide templates -\-> -->
+Git is a piece of software that lives on your computer and is used to manage what are known as repositories, a fancy
+name for a copy of software that is under Git Version control.
+
+GitHub is an online service which hosts software projects, its not the only one there are GitLab, BitBucker, Codeberg
+and others, but they all facilitate distributed software development, bug and feature tracking and project management.
+:::
+
+
+## Git & GitHub
+
+![](./img/remotes.jpg)
+
+## Cloning TopoStats
+
+We'll now clone TopoStats using GitKraken.
+
++ _File > Clone Repository_ (`Ctrl + N`)
++ _GitHub.com_
++ Select directory to clone to.
++ Under Repository to Clone start typing `TopoStats`
++ Select `TopoStats`
++ Clone the repo!
+
+::: {.notes}
+We're now going to clone the GitHub repository using GitKraken, these are the steps to take, but we're going to walk
+through them together to make sure everyone successfully clones the repository.
+:::
+
+::: {.scrollable}
+## Installing TopoStats under Virtual Environments
+
+We have...
+
++ Setup and activated a Virtual Environment.
++ Cloned the TopoStats repository.
+
+Next...
+
++ Install TopoStats from cloned repository.
+
+:::
+
+::: {.notes}
+Not that we have setup and activated a Virtual Environment and cloned the TopoStats repository its time to install it.
+
+Start a terminal (or Conda Powershell) and navigate to the location you installed TopoStats using ~cd~.
+
+Check you have activated your Conda environment if not
+:::
+
+
+::: {.scrollable}
+## Installing TopoStats under Virtual Environments
+
+```{.bash code-line-numbers="|1|2|3|4|5|6"}
+cd ~/tmp/TopoStats
+which python
+cond activate topostats-git
+git status
+pip install -e .
+run_topostats -h
+```
+:::
+
+::: {.notes}
+Start a terminal (or Conda Powershell) and navigate to the location you installed TopoStats using ~cd~.
+
+Check you have activated your Conda environment if not activate it.
+
+Use `git status` and check that you are on the `main` branch its shown on the first line of output.
+
+Now install TopoStats with the command `pip install -e .` and it should start downloading a bunch of files that
+TopoStats depends on then install all of them.
+:::
+
+::: {.scrollable}
+
+## `run_topostats -h`
+
+```{.bash}
+❱ run_topostats -h
+usage: run_topostats [-h] [-c CONFIG_FILE] [--create-config-file CREATE_CONFIG_FILE] [-s SUMMARY_CONFIG] [-b BASE_DIR] [-j CORES] [-l LOG_LEVEL] [-f FILE_EXT]
+                     [--channel CHANNEL] [-o OUTPUT_DIR] [--save_plots SAVE_PLOTS] [-m MASK] [-q QUIET] [-v] [-w WARNINGS]
+
+Process AFM images. Additional arguments over-ride those in the configuration file.
+
+options:
+  -h, --help            show this help message and exit
+  -c CONFIG_FILE, --config_file CONFIG_FILE
+                        Path to a YAML configuration file.
+  --create-config-file CREATE_CONFIG_FILE
+                        Filename to write a sample YAML configuration file to (should end in '.yaml').
+  -s SUMMARY_CONFIG, --summary_config SUMMARY_CONFIG
+                        Path to a YAML configuration file for summary plots and statistics.
+  -b BASE_DIR, --base_dir BASE_DIR
+                        Base directory to scan for images.
+  -j CORES, --cores CORES
+                        Number of CPU cores to use when processing.
+  -l LOG_LEVEL, --log_level LOG_LEVEL
+                        Logging level to use, default is 'info' for verbose output use 'debug'.
+  -f FILE_EXT, --file_ext FILE_EXT
+                        File extension to scan for.
+  --channel CHANNEL     Channel to extract.
+  -o OUTPUT_DIR, --output_dir OUTPUT_DIR
+                        Output directory to write results to.
+  --save_plots SAVE_PLOTS
+                        Whether to save plots.
+  -m MASK, --mask MASK  Mask the image.
+  -q QUIET, --quiet QUIET
+                        Toggle verbosity.
+  -v, --version         Report the current version of TopoStats that is installed.
+  -w WARNINGS, --warnings WARNINGS
+                        Whether to ignore warnings.
+```
+
+:::
+
+::: {.notes}
+If everything has worked you should be able to now see the help for the command `run_topostats`. These are command line
+options or "flags" and the help tells you what each is and how to use it.
+:::
+
+## `run_topostats -q`
+
+``` {.bash}
+(topostats) ❱ run_topostats -q
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ COMPLETE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  TopoStats Version           : 2.0.1.dev384+g365c6dd.d20230310
+  Base Directory              : /home/neil/work/projects/topostats/TopoStats
+  File Extension              : .spm
+  Files Found                 : 1
+  Successfully Processed^1    : 1 (100.0%)
+  Configuration               : output/config.yaml
+  All statistics              : output/all_statistics.csv
+  Distribution Plots          : output/summary_distributions
+
+  Email                       : topostats@sheffield.ac.uk
+  Documentation               : https://afm-spm.github.io/topostats/
+  Source Code                 : https://github.com/AFM-SPM/TopoStats/
+  Bug Reports/Feature Request : https://github.com/AFM-SPM/TopoStats/issues/new/choose
+  Citation File Format        : https://github.com/AFM-SPM/TopoStats/blob/main/CITATION.cff
+
+  ^1 Successful processing of an image is detection of grains and calculation of at least
+     grain statistics. If these have been disabled the percentage will be 0.
+
+  If you encounter bugs/issues or have feature requests please report them at the above URL
+  or email us.
+
+  If you have found TopoStats useful please consider citing it. A Citation File Format is
+  linked above and available from the Source Code page.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+```
+
+::: {.notes}
+You are now ready to `run_topostats`. If you `cd`, change directory, to a location you have some scans you can simply
+invoke `run_topostats` and it will use the default configuration to scan for `.spm` files and process any that are found
+within your current working directory. If you use the `-q` or `--quiet` flag it will be considerably less verbose, but
+it can often be useful to be verbose, particularly when submitting issues which we will come to in a bit.
+
+You may encounter some errors, if you're lucky you won't and on completion TopoStats reports how many files it found,
+how many it processed and where output is stored.
+:::
+
+
+::: {.scrollable}
+
+## `run_topostats --create-config-file`
+
+``` {.bash}
+run_topostats --create-config-file dummy_config.yaml
+[Fri, 10 Mar 2023 20:09:26] [INFO    ] [topostats] The YAML configuration file is valid.
+[Fri, 10 Mar 2023 20:09:26] [INFO    ] [topostats] A sample configuration has been written to : dummy_config.yaml
+[Fri, 10 Mar 2023 20:09:26] [INFO    ] [topostats] Please refer to the documentation on how to use the configuration file :
+
+https://afm-spm.github.io/TopoStats/usage.html#configuring-topostats
+https://afm-spm.github.io/TopoStats/configuration.html
+❱ cat ~/tmp/dummy_config.yaml
+# Sample configuration file auto-generated : 2023-03-10 20:09:26
+base_dir: /home/neil/work/git/hub/design-patterns
+output_dir: output
+log_level: info
+cores: 2
+file_ext: .spm
+loading:
+  channel: Height
+filter:
+  run: true
+  row_alignment_quantile: 0.5
+  threshold_method: std_dev
+  otsu_threshold_multiplier: 1.0
+  threshold_std_dev:
+    lower: 10.0
+    upper: 1.0
+  threshold_absolute:
+    lower: -1.0
+    upper: 1.0
+  gaussian_size: 1.0121397464510862
+  gaussian_mode: nearest
+  remove_scars:
+    run: true
+    removal_iterations: 2
+    threshold_low: 0.25
+    threshold_high: 0.666
+    max_scar_width: 4
+    min_scar_length: 16
+grains:
+  run: true
+  threshold_method: std_dev
+  otsu_threshold_multiplier: 1.0
+  threshold_std_dev:
+    lower: 10.0
+    upper: 1.0
+  threshold_absolute:
+    lower: -1.0
+    upper: 1.0
+  direction: upper
+  smallest_grain_size_nm2: 50
+  absolute_area_threshold:
+    upper:
+    - 300
+    - 3000
+    lower:
+    -
+    -
+grainstats:
+  run: true
+  edge_detection_method: binary_erosion
+  cropped_size: 40.0
+dnatracing:
+  run: true
+plotting:
+  run: true
+  save_format: png
+  image_set: core
+  zrange:
+  -
+  -
+  colorbar: true
+  axes: true
+  cmap: nanoscope
+  mask_cmap: blu
+  histogram_log_axis: false
+  histogram_bins: 200
+summary_stats:
+  run: true
+  config:
+```
+
+:::
+
+::: {.notes}
+You may want to customise the configuration TopoStats is run with. You can do this by first generating a configuration
+file using the `--create-config-file` flag and giving a file name. It can be anything you want but should end in
+`.yaml`.
+
+You can then open this file in a text editor (**NB** Word is _not_ a text editor, its a word-processor), edit
+parameters, save and then use it.
+:::
+
+
+::: {.scrollable}
+## Testing New Features - Git Branches
+
+```{mermaid}
+%%| fig-height: 2
+%%{init: { 'logLevel': 'debug', 'theme': 'base', 'gitGraph': {'showBranches': true,'showCommitLabel': true, 'rotateCommitLabel': true}} }%%
+gitGraph
+    commit
+    commit
+    branch bug1
+    checkout main
+    commit
+    checkout bug1
+    commit
+    commit
+    checkout main
+    branch feature1
+    checkout feature1
+    commit
+    commit
+    checkout bug1
+    commit
+    checkout main
+    merge bug1 tag: "v0.1.1"
+    checkout feature1
+    commit
+    commit
+    checkout main
+    merge feature1 tag: "v0.1.2"
+    commit
+```
+
+:::
+
+::: {.notes}
+We now return to Git because in order to test new features you need to be able to switch between what is known as
+branches.
+
+Git allows concurrent development of features and to do so uses the concept of branches which are shown in this diagram.
+
+A branch "forks" from the `main` branch at a certain point, features are developed and stored in the Git version control
+system via commits which are represented by each of these strange alpha-numeric characters which are known as commits
+(they typically have human readable comments associated with them so they are more intelligible).
+
+Once a feature is ready a "Pull Request" is created to be reviewed by others and once approved its merged back into the
+`main` branch.
+
+Its useful to bear this mental model of branches in mind as we are about to switch branches.
+:::
+
+
+::: {.scrollable}
+## GitKraken Changing Branches
+
+You can use GitKraken to switch branches, switch to `topostats-git`.
+
+Make sure you re-install TopoStats after switching branches (sometimes `pip install -e .` _doesn't_ pick up the changes
+Git makes).
+
+```{.bash}
+cd ~/tmp/TopoStats
+pip install -e .
+```
+:::
+
+::: {.notes}
+Switch branches using Git Kraken.
+
+In the background Git changes the files so they match those on the branch, you don't need to look for these changes,
+just be aware that they happen.
+
+After switching branches its sometimes required to reinstall TopoStats, in theory this shouldn't be required the `-e`
+flat used when installing means `editable` and it should just work with the files Git changed, but I've found in the
+past this didn't always appear to be the case so I'm now in the habit of reinstalling and it doesn't do any harm.
+:::
+
+::: {.scrollable}
+
+## Re-run `run_topostats`
+
+Re-run `run_topostats`
+
+. . .
+
+```{.bash}
+Traceback (most recent call last):
+  File "/home/neil/.virtualenvs/topostats/bin/run_topostats", line 8, in <module>
+    sys.exit(main())
+  File "/home/neil/work/projects/topostats/TopoStats/topostats/run_topostats.py", line 213, in main
+    print(f"Can we divide 2 by 0? {2/0}")
+ZeroDivisionError: division by zero
+```
+
+:::
+
+::: {.notes}
+If you now re-run `run_topostats` as you previously did you should get a different result, can anyone tell me what
+happens?
+
+You should have seen that the last message was
+
+Ok, that is good, and by design I set this branch up so that it would purposefully fail. Python raises such errors
+because you can not divide any number by zero is undefined because you can not multiply any number by zero to get 2.
+
+This isn't a great example but it shows how switching branches can result in failures, and it is hoped that after this
+tutorial you are able to test new feature branches or bug fixes, but what would you do with such a failure if you
+encounter one whether that is on the `main` branch or a feature branch?
+:::
+
+
+## GitHub - Reporting Issues
+
+Please report bugs on GitHub
+
+::: {.notes}
+:::
+
+<!-- Slide templates -->
 
 <!-- ::: {.scrollable} -->
 <!-- ## <TITLE> -->
