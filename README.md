@@ -1,11 +1,14 @@
-# Template Quarto Revealjs site
+# TopoStats Tutorial
 
-You will need to run `quarto publish gh-pages` once locally before deploying this template.
+This repository contains the source [Quarto](https://www.quarto.org) for a set of slides that cover using Conda virtual
+environments to work with a Git installed version of the Python package [TopoStats](https://afm-spm.github.io/TopoStats/).
 
-## Repository settings
+## Using these slides
+<br />This work is licensed under a [Creative
+Commons Attribution-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-sa/4.0/").
 
-You will also need to make sure your repository action settings are configured to allow read and write permissions.
 
-![image](https://user-images.githubusercontent.com/20887250/216280796-86028c95-76b7-418a-a3eb-e614a8ab874a.png)
+## Acknowledgements
 
-You can find this settings at `https://github.com/[USER]/[repo]/settings/actions`
+Thanks to my colleague [David Wilby](https://www.github.com/davidwilby) for the inspiration to publish my slides in this
+manner.
