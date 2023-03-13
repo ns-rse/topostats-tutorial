@@ -1,0 +1,142 @@
+[
+  {
+    "objectID": "index.html#view-these-slides",
+    "href": "index.html#view-these-slides",
+    "title": "TopoStats Tutorial : Virtual Environments & Git Branches",
+    "section": "View these slides…",
+    "text": "View these slides…\n\n\n    \nhttps://ns-rse.github.io/topostats-tutorial"
+  },
+  {
+    "objectID": "index.html#introduction",
+    "href": "index.html#introduction",
+    "title": "TopoStats Tutorial : Virtual Environments & Git Branches",
+    "section": "Introduction",
+    "text": "Introduction\n\nTopoStats has undergone significant revision.\nVersioned releases available via PyPI\nTopoStats is still undergoing significant development.\nAlso available via GitHub.\n\n\nTopoStats has undergone significant revision and is, we hope, significantly easier to use these days. Its easy to install via PyPI as we make versioned releases there, but there is on-going development to refine image processing under the hood and add more features and flexibility. These features are, until a new version is released, only available if TopoStats is installed via GitHub."
+  },
+  {
+    "objectID": "index.html#introduction-cont.",
+    "href": "index.html#introduction-cont.",
+    "title": "TopoStats Tutorial : Virtual Environments & Git Branches",
+    "section": "Introduction (cont.)",
+    "text": "Introduction (cont.)\n\nUser feedback is really, really important.\n\nBugs! When things break.\nFeatures - New functionality.\n\nBest to capture bugs/issues early in development cycle before PyPI releases"
+  },
+  {
+    "objectID": "index.html#content",
+    "href": "index.html#content",
+    "title": "TopoStats Tutorial : Virtual Environments & Git Branches",
+    "section": "Content",
+    "text": "Content\n\nPython Virtual Environments (Conda).\nGitKraken for cloning TopoStats GitHub repository.\nInstalling TopoStats from cloned repository in Virtual Environment.\nSwitching branches and testing.\nReporting issues."
+  },
+  {
+    "objectID": "index.html#python-virtual-environments",
+    "href": "index.html#python-virtual-environments",
+    "title": "TopoStats Tutorial : Virtual Environments & Git Branches",
+    "section": "Python Virtual Environments",
+    "text": "Python Virtual Environments\n\nComprehensive : Introduction to Conda for (Data) Scientists\nRecommend Miniconda, comes with Python which is all that is required.\n\nLinux\nWindows (64-bit)\nOSX (Intel)\nOSX (M1)\n\n\n\nYou’ve hopefully all managed to go through the Setup instructions from the Introduction to Conda for (Data) Scientists and have installed Miniconda on your computers.\nWe recommend Miniconda as its a minimal install that includes Python. If you’ve not there are direct links to install here."
+  },
+  {
+    "objectID": "index.html#command-line-environments",
+    "href": "index.html#command-line-environments",
+    "title": "TopoStats Tutorial : Virtual Environments & Git Branches",
+    "section": "Command Line Environments",
+    "text": "Command Line Environments\n\nCommand line programmes are searched for in order looking along the paths in $PATH.\nA “virtual environment” is an isolated set of commands that take precedence over system commands.\nYou can have multiple virtual environments and switch between them.\n\n\nWhen you’re using a command line environment programmes are searched for in order along the paths stored in a special variable known as PATH. A virtual environment is an isolated set of commands that take precedence over system commands and they do this by modifying the PATH variable. Its possible to have multiple virtual environments installed and switch between them, doing so changes which environment is listed first in your PATH."
+  },
+  {
+    "objectID": "index.html#create-and-activate-virtual-environment",
+    "href": "index.html#create-and-activate-virtual-environment",
+    "title": "TopoStats Tutorial : Virtual Environments & Git Branches",
+    "section": "Create and Activate Virtual Environment",
+    "text": "Create and Activate Virtual Environment\necho $PATH    # Locations programmes are searched for BEFORE\nwhich python  # Show version of python used BEFORE\nconda create --name topostats-git python=3.10\nconda activate topostats-git\necho $PATH    # Show locations programmes are searched for AFTER\nwhich python  # Show version of python used AFTER"
+  },
+  {
+    "objectID": "index.html#virtual-environments",
+    "href": "index.html#virtual-environments",
+    "title": "TopoStats Tutorial : Virtual Environments & Git Branches",
+    "section": "Virtual Environments",
+    "text": "Virtual Environments\n\n\nThis is a simple graphical overview of how you can have multiple virtual environments co-existing within each other.\nThere are three environments each with different versions of Python installed, although you should never use Python 2.7 these days. Within each environment there are different Python packages installed, 1 has Python 2.7 along with Numpy 1.14.4 and Matplotlib 2.2.5. 2 Python 3.6 along with the packages Pandas 1.0.1 and PySpark 2.4.8. 3 has Python 3.10 and the package Pandas 1.3.5 and Matplotlib 3.5.1.\nThese all work in isolation, it just depedns which one has been activated."
+  },
+  {
+    "objectID": "index.html#version-control-a-digression",
+    "href": "index.html#version-control-a-digression",
+    "title": "TopoStats Tutorial : Virtual Environments & Git Branches",
+    "section": "Version Control… a digression",
+    "text": "Version Control… a digression\nComprehensive Git, GitHub and GitKraken : From Zero to Hero.\nHopefully you have already…\n\nSetup GitHub account (https://github.com) using University email address.\nDownload and install GitKraken using GitHub account associated with University email address.\n\n\nThe Research Software Engineering group run a comprehensive Git, GitHub and GitKraken course on a regular basis and I would highly recommend taking it (but then I would as I help run it!)\nIt is the sort of course I wish I had taken when I started out using Git as it covers the basics of version control and then moves onto collaborative work and how to use GitHub to report Issues and dealing with some of the problems that might arise when working on code collabotatively.\nSome of these aspects aren’t necessary for what we are covering today but I feel they are useful to be aware of so I’d encourage you to take the course.\nHopefully you have already setup a GitHub account and installed GitKarken.\nThat said we’re going to make a lightening digression into version control, what it is, why it matters to TopoStats development and how it impacts testing new features."
+  },
+  {
+    "objectID": "index.html#getting-started-with-git-github-and-gitkraken",
+    "href": "index.html#getting-started-with-git-github-and-gitkraken",
+    "title": "TopoStats Tutorial : Virtual Environments & Git Branches",
+    "section": "Getting Started with Git, GitHub and GitKraken",
+    "text": "Getting Started with Git, GitHub and GitKraken\n\nGit is a programme that runs on your computer.\nGitHub is an online service which hosts software projects and facilitates…\n\nDistributed software development\nTracking bugs/features\nProject management\n\nGitKraken is a client that interfaces to Git and GitHub and communicates between the two.\n\n\nIts important to make a distinction between Git, GitHub and GitKraken.\nGit is a piece of software that lives on your computer and is used to manage what are known as repositories, a fancy name for a copy of software that is under Git Version control.\nGitHub is an online service which hosts software projects, its not the only one there are GitLab, BitBucker, Codeberg and others, but they all facilitate distributed software development, bug and feature tracking and project management."
+  },
+  {
+    "objectID": "index.html#git-github",
+    "href": "index.html#git-github",
+    "title": "TopoStats Tutorial : Virtual Environments & Git Branches",
+    "section": "Git & GitHub",
+    "text": "Git & GitHub"
+  },
+  {
+    "objectID": "index.html#cloning-topostats",
+    "href": "index.html#cloning-topostats",
+    "title": "TopoStats Tutorial : Virtual Environments & Git Branches",
+    "section": "Cloning TopoStats",
+    "text": "Cloning TopoStats\nWe’ll now clone TopoStats using GitKraken.\n\nFile > Clone Repository (Ctrl + N)\nGitHub.com\nSelect directory to clone to.\nUnder Repository to Clone start typing TopoStats\nSelect TopoStats\nClone the repo!\n\n\nWe’re now going to clone the GitHub repository using GitKraken, these are the steps to take, but we’re going to walk through them together to make sure everyone successfully clones the repository."
+  },
+  {
+    "objectID": "index.html#installing-topostats-under-virtual-environments",
+    "href": "index.html#installing-topostats-under-virtual-environments",
+    "title": "TopoStats Tutorial : Virtual Environments & Git Branches",
+    "section": "Installing TopoStats under Virtual Environments",
+    "text": "Installing TopoStats under Virtual Environments\nWe have…\n\nSetup and activated a Virtual Environment.\nCloned the TopoStats repository.\n\nNext…\n\nInstall TopoStats from cloned repository."
+  },
+  {
+    "objectID": "index.html#installing-topostats-under-virtual-environments-1",
+    "href": "index.html#installing-topostats-under-virtual-environments-1",
+    "title": "TopoStats Tutorial : Virtual Environments & Git Branches",
+    "section": "Installing TopoStats under Virtual Environments",
+    "text": "Installing TopoStats under Virtual Environments\ncd ~/tmp/TopoStats\nwhich python\ncond activate topostats-git\ngit status\npip install -e .\nrun_topostats -h"
+  },
+  {
+    "objectID": "index.html#run_topostats--h",
+    "href": "index.html#run_topostats--h",
+    "title": "TopoStats Tutorial : Virtual Environments & Git Branches",
+    "section": "run_topostats -h",
+    "text": "run_topostats -h\n❱ run_topostats -h\nusage: run_topostats [-h] [-c CONFIG_FILE] [--create-config-file CREATE_CONFIG_FILE] [-s SUMMARY_CONFIG] [-b BASE_DIR] [-j CORES] [-l LOG_LEVEL] [-f FILE_EXT]\n                     [--channel CHANNEL] [-o OUTPUT_DIR] [--save_plots SAVE_PLOTS] [-m MASK] [-q QUIET] [-v] [-w WARNINGS]\n\nProcess AFM images. Additional arguments over-ride those in the configuration file.\n\noptions:\n  -h, --help            show this help message and exit\n  -c CONFIG_FILE, --config_file CONFIG_FILE\n                        Path to a YAML configuration file.\n  --create-config-file CREATE_CONFIG_FILE\n                        Filename to write a sample YAML configuration file to (should end in '.yaml').\n  -s SUMMARY_CONFIG, --summary_config SUMMARY_CONFIG\n                        Path to a YAML configuration file for summary plots and statistics.\n  -b BASE_DIR, --base_dir BASE_DIR\n                        Base directory to scan for images.\n  -j CORES, --cores CORES\n                        Number of CPU cores to use when processing.\n  -l LOG_LEVEL, --log_level LOG_LEVEL\n                        Logging level to use, default is 'info' for verbose output use 'debug'.\n  -f FILE_EXT, --file_ext FILE_EXT\n                        File extension to scan for.\n  --channel CHANNEL     Channel to extract.\n  -o OUTPUT_DIR, --output_dir OUTPUT_DIR\n                        Output directory to write results to.\n  --save_plots SAVE_PLOTS\n                        Whether to save plots.\n  -m MASK, --mask MASK  Mask the image.\n  -q QUIET, --quiet QUIET\n                        Toggle verbosity.\n  -v, --version         Report the current version of TopoStats that is installed.\n  -w WARNINGS, --warnings WARNINGS\n                        Whether to ignore warnings."
+  },
+  {
+    "objectID": "index.html#run_topostats--q",
+    "href": "index.html#run_topostats--q",
+    "title": "TopoStats Tutorial : Virtual Environments & Git Branches",
+    "section": "run_topostats -q",
+    "text": "run_topostats -q\n(topostats) ❱ run_topostats -q\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ COMPLETE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n  TopoStats Version           : 2.0.1.dev384+g365c6dd.d20230310\n  Base Directory              : /home/neil/work/projects/topostats/TopoStats\n  File Extension              : .spm\n  Files Found                 : 1\n  Successfully Processed^1    : 1 (100.0%)\n  Configuration               : output/config.yaml\n  All statistics              : output/all_statistics.csv\n  Distribution Plots          : output/summary_distributions\n\n  Email                       : topostats@sheffield.ac.uk\n  Documentation               : https://afm-spm.github.io/topostats/\n  Source Code                 : https://github.com/AFM-SPM/TopoStats/\n  Bug Reports/Feature Request : https://github.com/AFM-SPM/TopoStats/issues/new/choose\n  Citation File Format        : https://github.com/AFM-SPM/TopoStats/blob/main/CITATION.cff\n\n  ^1 Successful processing of an image is detection of grains and calculation of at least\n     grain statistics. If these have been disabled the percentage will be 0.\n\n  If you encounter bugs/issues or have feature requests please report them at the above URL\n  or email us.\n\n  If you have found TopoStats useful please consider citing it. A Citation File Format is\n  linked above and available from the Source Code page.\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\nYou are now ready to run_topostats. If you cd, change directory, to a location you have some scans you can simply invoke run_topostats and it will use the default configuration to scan for .spm files and process any that are found within your current working directory. If you use the -q or --quiet flag it will be considerably less verbose, but it can often be useful to be verbose, particularly when submitting issues which we will come to in a bit.\nYou may encounter some errors, if you’re lucky you won’t and on completion TopoStats reports how many files it found, how many it processed and where output is stored."
+  },
+  {
+    "objectID": "index.html#run_topostats---create-config-file",
+    "href": "index.html#run_topostats---create-config-file",
+    "title": "TopoStats Tutorial : Virtual Environments & Git Branches",
+    "section": "run_topostats --create-config-file",
+    "text": "run_topostats --create-config-file\nrun_topostats --create-config-file dummy_config.yaml\n[Fri, 10 Mar 2023 20:09:26] [INFO    ] [topostats] The YAML configuration file is valid.\n[Fri, 10 Mar 2023 20:09:26] [INFO    ] [topostats] A sample configuration has been written to : dummy_config.yaml\n[Fri, 10 Mar 2023 20:09:26] [INFO    ] [topostats] Please refer to the documentation on how to use the configuration file :\n\nhttps://afm-spm.github.io/TopoStats/usage.html#configuring-topostats\nhttps://afm-spm.github.io/TopoStats/configuration.html\n❱ cat ~/tmp/dummy_config.yaml\n# Sample configuration file auto-generated : 2023-03-10 20:09:26\nbase_dir: /home/neil/work/git/hub/design-patterns\noutput_dir: output\nlog_level: info\ncores: 2\nfile_ext: .spm\nloading:\n  channel: Height\nfilter:\n  run: true\n  row_alignment_quantile: 0.5\n  threshold_method: std_dev\n  otsu_threshold_multiplier: 1.0\n  threshold_std_dev:\n    lower: 10.0\n    upper: 1.0\n  threshold_absolute:\n    lower: -1.0\n    upper: 1.0\n  gaussian_size: 1.0121397464510862\n  gaussian_mode: nearest\n  remove_scars:\n    run: true\n    removal_iterations: 2\n    threshold_low: 0.25\n    threshold_high: 0.666\n    max_scar_width: 4\n    min_scar_length: 16\ngrains:\n  run: true\n  threshold_method: std_dev\n  otsu_threshold_multiplier: 1.0\n  threshold_std_dev:\n    lower: 10.0\n    upper: 1.0\n  threshold_absolute:\n    lower: -1.0\n    upper: 1.0\n  direction: upper\n  smallest_grain_size_nm2: 50\n  absolute_area_threshold:\n    upper:\n    - 300\n    - 3000\n    lower:\n    -\n    -\ngrainstats:\n  run: true\n  edge_detection_method: binary_erosion\n  cropped_size: 40.0\ndnatracing:\n  run: true\nplotting:\n  run: true\n  save_format: png\n  image_set: core\n  zrange:\n  -\n  -\n  colorbar: true\n  axes: true\n  cmap: nanoscope\n  mask_cmap: blu\n  histogram_log_axis: false\n  histogram_bins: 200\nsummary_stats:\n  run: true\n  config:"
+  },
+  {
+    "objectID": "index.html#testing-new-features---git-branches",
+    "href": "index.html#testing-new-features---git-branches",
+    "title": "TopoStats Tutorial : Virtual Environments & Git Branches",
+    "section": "Testing New Features - Git Branches",
+    "text": "Testing New Features - Git Branches\n\n\n\n\n%%{init: { 'logLevel': 'debug', 'theme': 'base', 'gitGraph': {'showBranches': true,'showCommitLabel': true, 'rotateCommitLabel': true}} }%%\ngitGraph\n    commit\n    commit\n    branch bug1\n    checkout main\n    commit\n    checkout bug1\n    commit\n    commit\n    checkout main\n    branch feature1\n    checkout feature1\n    commit\n    commit\n    checkout bug1\n    commit\n    checkout main\n    merge bug1 tag: \"v0.1.1\"\n    checkout feature1\n    commit\n    commit\n    checkout main\n    merge feature1 tag: \"v0.1.2\"\n    commit"
+  },
+  {
+    "objectID": "index.html#gitkraken-changing-branches",
+    "href": "index.html#gitkraken-changing-branches",
+    "title": "TopoStats Tutorial : Virtual Environments & Git Branches",
+    "section": "GitKraken Changing Branches",
+    "text": "GitKraken Changing Branches\nYou can use GitKraken to switch branches, switch to topostats-git.\nMake sure you re-install TopoStats after switching branches (sometimes pip install -e . doesn’t pick up the changes Git makes).\ncd ~/tmp/TopoStats\npip install -e ."
+  },
+  {
+    "objectID": "index.html#github---reporting-issues",
+    "href": "index.html#github---reporting-issues",
+    "title": "TopoStats Tutorial : Virtual Environments & Git Branches",
+    "section": "GitHub - Reporting Issues",
+    "text": "GitHub - Reporting Issues\nPlease report bugs on GitHub\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nns-rse.github.io/topostats-tutorial/"
+  }
+]
