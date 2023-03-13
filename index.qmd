@@ -6,7 +6,7 @@ from: markdown+emoji
 format:
   revealjs:
     incremental: true
-    theme: night
+    theme: night # solarized | dark | night | league | sky
     slide-number: true
     show-slide-number: speaker
     # embed-resources: true
@@ -150,13 +150,14 @@ These all work in isolation, it just depedns which one has been activated.
 
 ## Version Control... a digression
 
-Comprehensive [Git, GitHub and GitKraken : From Zero to Hero](https://srse-git-github-zero2hero.netlify.app/).
 
 Hopefully you have already...
 
 + Setup GitHub account ([https://github.com](https://github.com)) using University email address.
-+ Download and install  [GitKraken](https://www.gitkraken.com/) using GitHub account associated with University email
++ Downloaded and install  [GitKraken](https://www.gitkraken.com/) using GitHub account associated with University email
   address.
+
+Comprehensive : [Git, GitHub and GitKraken : From Zero to Hero](https://srse-git-github-zero2hero.netlify.app/).
 
 ::: {.notes}
 The Research Software Engineering group run a comprehensive Git, GitHub and GitKraken course on a regular basis and I
@@ -198,7 +199,7 @@ and others, but they all facilitate distributed software development, bug and fe
 
 ## Git & GitHub
 
-![](./img/remotes.jpg)
+![](./img/remotes_inverted.png)
 
 ## Cloning TopoStats
 
@@ -214,6 +215,20 @@ We'll now clone TopoStats using GitKraken.
 ::: {.notes}
 We're now going to clone the GitHub repository using GitKraken, these are the steps to take, but we're going to walk
 through them together to make sure everyone successfully clones the repository.
+
+Start up or switch to GitKraken and from the menu select _File > Clone Repository_ (you can also use the keyboard
+shortcut `Ctrl + N`).
+
+We want to clone from GitHub so select that.
+
+Then select a directory to clone to, I'm going to clone to `tmp` but you are welcome to choose any location you want.
+
+Next you need to select what repository to clone, you can start typing `Topo` and should see an autocompleted list of
+options. Select `TopoStats` from under `AFM-SPM` organisation.
+
+Once that is all set up Clone the repository using the green button. This will take a while once its done you should see
+a message saying "Successfully clonded repo 'TopoStats'" and the option to "Open Now". But we'll take a break whilst
+that is downloading for everyone. Does anyone have any questions about anything so far?
 :::
 
 ::: {.scrollable}
@@ -231,11 +246,10 @@ Next...
 :::
 
 ::: {.notes}
-Not that we have setup and activated a Virtual Environment and cloned the TopoStats repository its time to install it.
+So far we have setup and activated a Virtual Environment and cloned the TopoStats repository its time to install it.
 
-Start a terminal (or Conda Powershell) and navigate to the location you installed TopoStats using ~cd~.
+Now we're going to install TopoStats that we have cloned from Git into this environment.
 
-Check you have activated your Conda environment if not
 :::
 
 
@@ -243,7 +257,7 @@ Check you have activated your Conda environment if not
 ## Installing TopoStats under Virtual Environments
 
 ```{.bash code-line-numbers="|1|2|3|4|5|6"}
-cd ~/tmp/TopoStats
+cd ~/tmp/topostats-tutorial/TopoStats
 which python
 cond activate topostats-git
 git status
@@ -253,14 +267,14 @@ run_topostats -h
 :::
 
 ::: {.notes}
-Start a terminal (or Conda Powershell) and navigate to the location you installed TopoStats using ~cd~.
-
 Check you have activated your Conda environment if not activate it.
 
 Use `git status` and check that you are on the `main` branch its shown on the first line of output.
 
-Now install TopoStats with the command `pip install -e .` and it should start downloading a bunch of files that
-TopoStats depends on then install all of them.
+Now install TopoStats with the command `pip install -e .` and it should start downloading a bunch of packages that
+TopoStats depends on then install all of them. The `.` means to install from the current directory whilst the `-e` flag
+tells Pip to install the package in what is known as "editable" format, and so rather than copying the files to a
+location under your virtual environment they are referenced from the current location.
 :::
 
 ::: {.scrollable}
@@ -313,7 +327,9 @@ options or "flags" and the help tells you what each is and how to use it.
 ## `run_topostats -q`
 
 ``` {.bash}
-(topostats) ❱ run_topostats -q
+(topostats) ❱ run_topostats --log_level warning
+[Mon, 13 Mar 2023 14:01:01] [INFO    ] [topostats] Updated config config[log_level] : info > warning
+Processing images from /home/neil/work/projects/topostats/TopoStats, results are under output: 100%|████████| 1/1 [00:00<?, ?it/s]
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ COMPLETE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   TopoStats Version           : 2.0.1.dev384+g365c6dd.d20230310
@@ -345,8 +361,8 @@ options or "flags" and the help tells you what each is and how to use it.
 ::: {.notes}
 You are now ready to `run_topostats`. If you `cd`, change directory, to a location you have some scans you can simply
 invoke `run_topostats` and it will use the default configuration to scan for `.spm` files and process any that are found
-within your current working directory. If you use the `-q` or `--quiet` flag it will be considerably less verbose, but
-it can often be useful to be verbose, particularly when submitting issues which we will come to in a bit.
+within your current working directory. If you use the `-l warning` or `--log_level warning` flag it will be considerably
+less verbose, but it can often be useful to be verbose, particularly when submitting issues which we will come to in a bit.
 
 You may encounter some errors, if you're lucky you won't and on completion TopoStats reports how many files it found,
 how many it processed and where output is stored.
@@ -448,8 +464,23 @@ You can then open this file in a text editor (**NB** Word is _not_ a text editor
 parameters, save and then use it.
 :::
 
+::: {.scrollable}
+
+## `run_topostats --config_file`
+
+``` {.bash}
+run_topostats --config_file dummy_config.yaml
+````
+:::
+
+
+::: {.notes}
+To use the configuration file you have just created you use the `--config_file` flat and give it the name of your file.
+:::
+
 
 ::: {.scrollable}
+
 ## Testing New Features - Git Branches
 
 ```{mermaid}
@@ -484,8 +515,8 @@ gitGraph
 :::
 
 ::: {.notes}
-We now return to Git because in order to test new features you need to be able to switch between what is known as
-branches.
+We now return to Git because in order to test new features you need to be able to switch between what is known in Git
+parlance as branches.
 
 Git allows concurrent development of features and to do so uses the concept of branches which are shown in this diagram.
 
@@ -503,7 +534,7 @@ Its useful to bear this mental model of branches in mind as we are about to swit
 ::: {.scrollable}
 ## GitKraken Changing Branches
 
-You can use GitKraken to switch branches, switch to `topostats-git`.
+You can use GitKraken to switch branches use switch to `topostats-git`.
 
 Make sure you re-install TopoStats after switching branches (sometimes `pip install -e .` _doesn't_ pick up the changes
 Git makes).
@@ -515,7 +546,15 @@ pip install -e .
 :::
 
 ::: {.notes}
-Switch branches using Git Kraken.
+Switch branches using Git Kraken. There are several ways of doing this but the easiest is to find the commit in the
+`Branch/Tag` column on the left, right-click on it and select "Checkout origin/<branch-name>" in this case
+`topostats-git`. This pulls down all changes from that branch and checks it out. You see that there is a laptop which
+indicates that your local computer has a copy of the branch at that particular commit and the tick indicates that you
+are checked out there. The other icon is the AFM-SPM GitHub organisation logo and indicates where that branch is on Git
+Hub.
+
+Once you've done this at the top you should see you are _Repository > topostats-git_ and if you want to get back to
+_main_ you can select it from the drop down menu under Branch.
 
 In the background Git changes the files so they match those on the branch, you don't need to look for these changes,
 just be aware that they happen.
@@ -548,23 +587,114 @@ ZeroDivisionError: division by zero
 If you now re-run `run_topostats` as you previously did you should get a different result, can anyone tell me what
 happens?
 
-You should have seen that the last message was
+You should have seen that the last message was `ZeroDivisonError: division by zero`.
 
 Ok, that is good, and by design I set this branch up so that it would purposefully fail. Python raises such errors
 because you can not divide any number by zero is undefined because you can not multiply any number by zero to get 2.
 
 This isn't a great example but it shows how switching branches can result in failures, and it is hoped that after this
 tutorial you are able to test new feature branches or bug fixes, but what would you do with such a failure if you
-encounter one whether that is on the `main` branch or a feature branch?
+encounter one whether that is on the `main** branch or a feature branch?
 :::
 
 
 ## GitHub - Reporting Issues
 
-Please report bugs on GitHub
++ Reporting bugs helps with feature development.
++ Removes them not just for you but for all users.
++ Can seem cumbersome at first but it gets easier with practice.
+
+. . .
+
+**SOLUTION** : GitHub
+Issues...[https://github.com/AFM-SPM/TopoStats/issues](https://github.com/AFM-SPM/TopoStats/issues)
 
 ::: {.notes}
+Reporting bugs and indeed new feature requests is really important, it helps those who are developing the code deal with
+issues and scenarios they might not have anticipated and without feedback the problems persist for all users so its not
+just for your benefit but for everyones that such problems get identified early, reported and fixed.
+
+The process can seem cumbersome at first but with practice it gets easier and we have written templates to ease the
+process.
+
+You can do this from within GitKraken but doing so means you can't take advantage of the Issue Templates we have setup.
+
+Instead we're going to go through the process on GitHub.
 :::
+
+
+## GitHub - Reporting Issues
+
+![](./img/github_issues.png)
+
+::: {.notes}
+In the repository on GitHub there are tabs for "_Code_", "_Issues_" and so forth, you want to select the "_Issues_" tab,
+and you will see a list of existing issues.
+
+On the top right is a button to report a "_New Issue_", click on this and you are presented with some options to use
+some pre-defined templates to report issues.
+:::
+
+## GitHub - Reporting Issues (_cont._)
+
+![](./img/github_issues_templates.png)
+
+**Markdown Links**
+
++ [Getting started with writing and formatting on GitHub - GitHub
+  Docs](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github)
++ [Basic writing and formatting syntax - GitHub
+  Docs](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
++ [Markdown Cheat Sheet | Markdown Guide](https://www.markdownguide.org/cheat-sheet)
+
+::: {.notes}
+We have setup templates to report Bugs, make a new feature request and you may or may not see the one for reporting a
+vulnerability. For this exercise we want to use the Bug Report form so clock on the "_Get Started_" button for that.
+
+You get a page which has a box for a title where you should put a short but descriptive title for the bug report that
+captures the essence of what you are reporting.
+
+There is then a box that is pre-populated with text in Markdown Format. If you haven't come across Markdown before don't
+worry its pretty simple and there are some links to get you started in using the formatting.
+
+The text is descriptive and walks you through the various steps for providing different aspects of information about the
+error you have encountered.
+
+At any stage you can click on the "_Preview_" tab and see what the page looks like.
+:::
+
+## GitHub - Reporting Issues (_cont._)
+
++ Describe the bug.
++ Include the configuration file.
++ Copy of the output.
++ Exact command that failed.
++ TopoStats version
++ Operating System and Python Version
++ Optional Python packages that are installed.
+
+::: {.notes}
+
+You are asked to tick off various tasks as completed and there is a section for each describing in a bit more detail how
+to complete it and with a Markdown code section to paste the output.
+
+You are asked to describe the bug, although typically most of this information is covered in the subsequent sections in
+greater detail.
+
+You are asked to paste a copy of your YAML configuration file rather than taking a picture of it. Its much more useful
+to paste such content because a screenshot does not allow anyone investigating the problem to copy, paste and reuse.
+
+A copy of the output is then requested to be pasted in, this should include as much information as possible about the
+failure.
+
+The exact command used, typically I would expect this to be `run_topostats --config_file <your_config>.yaml`
+
+Then the TopoStats command, the operating system and Python version and finally, optionally the full Python environment
+with all package versions included.
+:::
+
+## Any Questions?
+
 
 <!-- Slide templates -->
 
