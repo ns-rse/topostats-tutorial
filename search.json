@@ -60,7 +60,7 @@
     "href": "index.html#version-control-a-digression",
     "title": "TopoStats Tutorial : Virtual Environments & Git Branches",
     "section": "Version Control… a digression",
-    "text": "Version Control… a digression\nComprehensive Git, GitHub and GitKraken : From Zero to Hero.\nHopefully you have already…\n\nSetup GitHub account (https://github.com) using University email address.\nDownload and install GitKraken using GitHub account associated with University email address.\n\n\nThe Research Software Engineering group run a comprehensive Git, GitHub and GitKraken course on a regular basis and I would highly recommend taking it (but then I would as I help run it!)\nIt is the sort of course I wish I had taken when I started out using Git as it covers the basics of version control and then moves onto collaborative work and how to use GitHub to report Issues and dealing with some of the problems that might arise when working on code collabotatively.\nSome of these aspects aren’t necessary for what we are covering today but I feel they are useful to be aware of so I’d encourage you to take the course.\nHopefully you have already setup a GitHub account and installed GitKarken.\nThat said we’re going to make a lightening digression into version control, what it is, why it matters to TopoStats development and how it impacts testing new features."
+    "text": "Version Control… a digression\nHopefully you have already…\n\nSetup GitHub account (https://github.com) using University email address.\nDownloaded and install GitKraken using GitHub account associated with University email address.\n\nComprehensive : Git, GitHub and GitKraken : From Zero to Hero.\n\nThe Research Software Engineering group run a comprehensive Git, GitHub and GitKraken course on a regular basis and I would highly recommend taking it (but then I would as I help run it!)\nIt is the sort of course I wish I had taken when I started out using Git as it covers the basics of version control and then moves onto collaborative work and how to use GitHub to report Issues and dealing with some of the problems that might arise when working on code collabotatively.\nSome of these aspects aren’t necessary for what we are covering today but I feel they are useful to be aware of so I’d encourage you to take the course.\nHopefully you have already setup a GitHub account and installed GitKarken.\nThat said we’re going to make a lightening digression into version control, what it is, why it matters to TopoStats development and how it impacts testing new features."
   },
   {
     "objectID": "index.html#getting-started-with-git-github-and-gitkraken",
@@ -81,7 +81,7 @@
     "href": "index.html#cloning-topostats",
     "title": "TopoStats Tutorial : Virtual Environments & Git Branches",
     "section": "Cloning TopoStats",
-    "text": "Cloning TopoStats\nWe’ll now clone TopoStats using GitKraken.\n\nFile > Clone Repository (Ctrl + N)\nGitHub.com\nSelect directory to clone to.\nUnder Repository to Clone start typing TopoStats\nSelect TopoStats\nClone the repo!\n\n\nWe’re now going to clone the GitHub repository using GitKraken, these are the steps to take, but we’re going to walk through them together to make sure everyone successfully clones the repository."
+    "text": "Cloning TopoStats\nWe’ll now clone TopoStats using GitKraken.\n\nFile > Clone Repository (Ctrl + N)\nGitHub.com\nSelect directory to clone to.\nUnder Repository to Clone start typing TopoStats\nSelect TopoStats\nClone the repo!\n\n\nWe’re now going to clone the GitHub repository using GitKraken, these are the steps to take, but we’re going to walk through them together to make sure everyone successfully clones the repository.\nStart up or switch to GitKraken and from the menu select File > Clone Repository (you can also use the keyboard shortcut Ctrl + N).\nWe want to clone from GitHub so select that.\nThen select a directory to clone to, I’m going to clone to tmp but you are welcome to choose any location you want.\nNext you need to select what repository to clone, you can start typing Topo and should see an autocompleted list of options. Select TopoStats from under AFM-SPM organisation.\nOnce that is all set up Clone the repository using the green button. This will take a while once its done you should see a message saying “Successfully clonded repo ‘TopoStats’” and the option to “Open Now”. But we’ll take a break whilst that is downloading for everyone. Does anyone have any questions about anything so far?"
   },
   {
     "objectID": "index.html#installing-topostats-under-virtual-environments",
@@ -95,7 +95,7 @@
     "href": "index.html#installing-topostats-under-virtual-environments-1",
     "title": "TopoStats Tutorial : Virtual Environments & Git Branches",
     "section": "Installing TopoStats under Virtual Environments",
-    "text": "Installing TopoStats under Virtual Environments\ncd ~/tmp/TopoStats\nwhich python\ncond activate topostats-git\ngit status\npip install -e .\nrun_topostats -h"
+    "text": "Installing TopoStats under Virtual Environments\ncd ~/tmp/topostats-tutorial/TopoStats\nwhich python\ncond activate topostats-git\ngit status\npip install -e .\nrun_topostats -h"
   },
   {
     "objectID": "index.html#run_topostats--h",
@@ -109,7 +109,7 @@
     "href": "index.html#run_topostats--q",
     "title": "TopoStats Tutorial : Virtual Environments & Git Branches",
     "section": "run_topostats -q",
-    "text": "run_topostats -q\n(topostats) ❱ run_topostats -q\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ COMPLETE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n  TopoStats Version           : 2.0.1.dev384+g365c6dd.d20230310\n  Base Directory              : /home/neil/work/projects/topostats/TopoStats\n  File Extension              : .spm\n  Files Found                 : 1\n  Successfully Processed^1    : 1 (100.0%)\n  Configuration               : output/config.yaml\n  All statistics              : output/all_statistics.csv\n  Distribution Plots          : output/summary_distributions\n\n  Email                       : topostats@sheffield.ac.uk\n  Documentation               : https://afm-spm.github.io/topostats/\n  Source Code                 : https://github.com/AFM-SPM/TopoStats/\n  Bug Reports/Feature Request : https://github.com/AFM-SPM/TopoStats/issues/new/choose\n  Citation File Format        : https://github.com/AFM-SPM/TopoStats/blob/main/CITATION.cff\n\n  ^1 Successful processing of an image is detection of grains and calculation of at least\n     grain statistics. If these have been disabled the percentage will be 0.\n\n  If you encounter bugs/issues or have feature requests please report them at the above URL\n  or email us.\n\n  If you have found TopoStats useful please consider citing it. A Citation File Format is\n  linked above and available from the Source Code page.\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\nYou are now ready to run_topostats. If you cd, change directory, to a location you have some scans you can simply invoke run_topostats and it will use the default configuration to scan for .spm files and process any that are found within your current working directory. If you use the -q or --quiet flag it will be considerably less verbose, but it can often be useful to be verbose, particularly when submitting issues which we will come to in a bit.\nYou may encounter some errors, if you’re lucky you won’t and on completion TopoStats reports how many files it found, how many it processed and where output is stored."
+    "text": "run_topostats -q\n(topostats) ❱ run_topostats --log_level warning\n[Mon, 13 Mar 2023 14:01:01] [INFO    ] [topostats] Updated config config[log_level] : info > warning\nProcessing images from /home/neil/work/projects/topostats/TopoStats, results are under output: 100%|████████| 1/1 [00:00<?, ?it/s]\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ COMPLETE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n  TopoStats Version           : 2.0.1.dev384+g365c6dd.d20230310\n  Base Directory              : /home/neil/work/projects/topostats/TopoStats\n  File Extension              : .spm\n  Files Found                 : 1\n  Successfully Processed^1    : 1 (100.0%)\n  Configuration               : output/config.yaml\n  All statistics              : output/all_statistics.csv\n  Distribution Plots          : output/summary_distributions\n\n  Email                       : topostats@sheffield.ac.uk\n  Documentation               : https://afm-spm.github.io/topostats/\n  Source Code                 : https://github.com/AFM-SPM/TopoStats/\n  Bug Reports/Feature Request : https://github.com/AFM-SPM/TopoStats/issues/new/choose\n  Citation File Format        : https://github.com/AFM-SPM/TopoStats/blob/main/CITATION.cff\n\n  ^1 Successful processing of an image is detection of grains and calculation of at least\n     grain statistics. If these have been disabled the percentage will be 0.\n\n  If you encounter bugs/issues or have feature requests please report them at the above URL\n  or email us.\n\n  If you have found TopoStats useful please consider citing it. A Citation File Format is\n  linked above and available from the Source Code page.\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\nYou are now ready to run_topostats. If you cd, change directory, to a location you have some scans you can simply invoke run_topostats and it will use the default configuration to scan for .spm files and process any that are found within your current working directory. If you use the -l warning or --log_level warning flag it will be considerably less verbose, but it can often be useful to be verbose, particularly when submitting issues which we will come to in a bit.\nYou may encounter some errors, if you’re lucky you won’t and on completion TopoStats reports how many files it found, how many it processed and where output is stored."
   },
   {
     "objectID": "index.html#run_topostats---create-config-file",
@@ -119,24 +119,66 @@
     "text": "run_topostats --create-config-file\nrun_topostats --create-config-file dummy_config.yaml\n[Fri, 10 Mar 2023 20:09:26] [INFO    ] [topostats] The YAML configuration file is valid.\n[Fri, 10 Mar 2023 20:09:26] [INFO    ] [topostats] A sample configuration has been written to : dummy_config.yaml\n[Fri, 10 Mar 2023 20:09:26] [INFO    ] [topostats] Please refer to the documentation on how to use the configuration file :\n\nhttps://afm-spm.github.io/TopoStats/usage.html#configuring-topostats\nhttps://afm-spm.github.io/TopoStats/configuration.html\n❱ cat ~/tmp/dummy_config.yaml\n# Sample configuration file auto-generated : 2023-03-10 20:09:26\nbase_dir: /home/neil/work/git/hub/design-patterns\noutput_dir: output\nlog_level: info\ncores: 2\nfile_ext: .spm\nloading:\n  channel: Height\nfilter:\n  run: true\n  row_alignment_quantile: 0.5\n  threshold_method: std_dev\n  otsu_threshold_multiplier: 1.0\n  threshold_std_dev:\n    lower: 10.0\n    upper: 1.0\n  threshold_absolute:\n    lower: -1.0\n    upper: 1.0\n  gaussian_size: 1.0121397464510862\n  gaussian_mode: nearest\n  remove_scars:\n    run: true\n    removal_iterations: 2\n    threshold_low: 0.25\n    threshold_high: 0.666\n    max_scar_width: 4\n    min_scar_length: 16\ngrains:\n  run: true\n  threshold_method: std_dev\n  otsu_threshold_multiplier: 1.0\n  threshold_std_dev:\n    lower: 10.0\n    upper: 1.0\n  threshold_absolute:\n    lower: -1.0\n    upper: 1.0\n  direction: upper\n  smallest_grain_size_nm2: 50\n  absolute_area_threshold:\n    upper:\n    - 300\n    - 3000\n    lower:\n    -\n    -\ngrainstats:\n  run: true\n  edge_detection_method: binary_erosion\n  cropped_size: 40.0\ndnatracing:\n  run: true\nplotting:\n  run: true\n  save_format: png\n  image_set: core\n  zrange:\n  -\n  -\n  colorbar: true\n  axes: true\n  cmap: nanoscope\n  mask_cmap: blu\n  histogram_log_axis: false\n  histogram_bins: 200\nsummary_stats:\n  run: true\n  config:"
   },
   {
+    "objectID": "index.html#run_topostats---config_file",
+    "href": "index.html#run_topostats---config_file",
+    "title": "TopoStats Tutorial : Virtual Environments & Git Branches",
+    "section": "run_topostats --config_file",
+    "text": "run_topostats --config_file\nrun_topostats --config_file dummy_config.yaml"
+  },
+  {
     "objectID": "index.html#testing-new-features---git-branches",
     "href": "index.html#testing-new-features---git-branches",
     "title": "TopoStats Tutorial : Virtual Environments & Git Branches",
     "section": "Testing New Features - Git Branches",
-    "text": "Testing New Features - Git Branches\n\n\n\n\n%%{init: { 'logLevel': 'debug', 'theme': 'base', 'gitGraph': {'showBranches': true,'showCommitLabel': true, 'rotateCommitLabel': true}} }%%\ngitGraph\n    commit\n    commit\n    branch bug1\n    checkout main\n    commit\n    checkout bug1\n    commit\n    commit\n    checkout main\n    branch feature1\n    checkout feature1\n    commit\n    commit\n    checkout bug1\n    commit\n    checkout main\n    merge bug1 tag: \"v0.1.1\"\n    checkout feature1\n    commit\n    commit\n    checkout main\n    merge feature1 tag: \"v0.1.2\"\n    commit"
+    "text": "Testing New Features - Git Branches\n%%| fig-height: 2\n%%{init: { 'logLevel': 'debug', 'theme': 'base', 'gitGraph': {'showBranches': true,'showCommitLabel': true, 'rotateCommitLabel': true}} }%%\ngitGraph\n    commit\n    commit\n    branch bug1\n    checkout main\n    commit\n    checkout bug1\n    commit\n    commit\n    checkout main\n    branch feature1\n    checkout feature1\n    commit\n    commit\n    checkout bug1\n    commit\n    checkout main\n    merge bug1 tag: \"v0.1.1\"\n    checkout feature1\n    commit\n    commit\n    checkout main\n    merge feature1 tag: \"v0.1.2\"\n    commit"
   },
   {
     "objectID": "index.html#gitkraken-changing-branches",
     "href": "index.html#gitkraken-changing-branches",
     "title": "TopoStats Tutorial : Virtual Environments & Git Branches",
     "section": "GitKraken Changing Branches",
-    "text": "GitKraken Changing Branches\nYou can use GitKraken to switch branches, switch to topostats-git.\nMake sure you re-install TopoStats after switching branches (sometimes pip install -e . doesn’t pick up the changes Git makes).\ncd ~/tmp/TopoStats\npip install -e ."
+    "text": "GitKraken Changing Branches\nYou can use GitKraken to switch branches use switch to topostats-git.\nMake sure you re-install TopoStats after switching branches (sometimes pip install -e . doesn’t pick up the changes Git makes).\ncd ~/tmp/TopoStats\npip install -e ."
+  },
+  {
+    "objectID": "index.html#re-run-run_topostats",
+    "href": "index.html#re-run-run_topostats",
+    "title": "TopoStats Tutorial : Virtual Environments & Git Branches",
+    "section": "Re-run run_topostats",
+    "text": "Re-run run_topostats\nRe-run run_topostats\n\nTraceback (most recent call last):\n  File \"/home/neil/.virtualenvs/topostats/bin/run_topostats\", line 8, in <module>\n    sys.exit(main())\n  File \"/home/neil/work/projects/topostats/TopoStats/topostats/run_topostats.py\", line 213, in main\n    print(f\"Can we divide 2 by 0? {2/0}\")\nZeroDivisionError: division by zero"
   },
   {
     "objectID": "index.html#github---reporting-issues",
     "href": "index.html#github---reporting-issues",
     "title": "TopoStats Tutorial : Virtual Environments & Git Branches",
     "section": "GitHub - Reporting Issues",
-    "text": "GitHub - Reporting Issues\nPlease report bugs on GitHub\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nns-rse.github.io/topostats-tutorial/"
+    "text": "GitHub - Reporting Issues\n\nReporting bugs helps with feature development.\nRemoves them not just for you but for all users.\nCan seem cumbersome at first but it gets easier with practice.\n\n\nSOLUTION : GitHub Issues…https://github.com/AFM-SPM/TopoStats/issues\n\nReporting bugs and indeed new feature requests is really important, it helps those who are developing the code deal with issues and scenarios they might not have anticipated and without feedback the problems persist for all users so its not just for your benefit but for everyones that such problems get identified early, reported and fixed.\nThe process can seem cumbersome at first but with practice it gets easier and we have written templates to ease the process.\nYou can do this from within GitKraken but doing so means you can’t take advantage of the Issue Templates we have setup.\nInstead we’re going to go through the process on GitHub."
+  },
+  {
+    "objectID": "index.html#github---reporting-issues-1",
+    "href": "index.html#github---reporting-issues-1",
+    "title": "TopoStats Tutorial : Virtual Environments & Git Branches",
+    "section": "GitHub - Reporting Issues",
+    "text": "GitHub - Reporting Issues\n\n\nIn the repository on GitHub there are tabs for “Code”, “Issues” and so forth, you want to select the “Issues” tab, and you will see a list of existing issues.\nOn the top right is a button to report a “New Issue”, click on this and you are presented with some options to use some pre-defined templates to report issues."
+  },
+  {
+    "objectID": "index.html#github---reporting-issues-cont.",
+    "href": "index.html#github---reporting-issues-cont.",
+    "title": "TopoStats Tutorial : Virtual Environments & Git Branches",
+    "section": "GitHub - Reporting Issues (cont.)",
+    "text": "GitHub - Reporting Issues (cont.)\n\nMarkdown Links\n\nGetting started with writing and formatting on GitHub - GitHub Docs\nBasic writing and formatting syntax - GitHub Docs\nMarkdown Cheat Sheet | Markdown Guide\n\n\nWe have setup templates to report Bugs, make a new feature request and you may or may not see the one for reporting a vulnerability. For this exercise we want to use the Bug Report form so clock on the “Get Started” button for that.\nYou get a page which has a box for a title where you should put a short but descriptive title for the bug report that captures the essence of what you are reporting.\nThere is then a box that is pre-populated with text in Markdown Format. If you haven’t come across Markdown before don’t worry its pretty simple and there are some links to get you started in using the formatting.\nThe text is descriptive and walks you through the various steps for providing different aspects of information about the error you have encountered.\nAt any stage you can click on the “Preview” tab and see what the page looks like."
+  },
+  {
+    "objectID": "index.html#github---reporting-issues-cont.-1",
+    "href": "index.html#github---reporting-issues-cont.-1",
+    "title": "TopoStats Tutorial : Virtual Environments & Git Branches",
+    "section": "GitHub - Reporting Issues (cont.)",
+    "text": "GitHub - Reporting Issues (cont.)\n\nDescribe the bug.\nInclude the configuration file.\nCopy of the output.\nExact command that failed.\nTopoStats version\nOperating System and Python Version\nOptional Python packages that are installed.\n\n\nYou are asked to tick off various tasks as completed and there is a section for each describing in a bit more detail how to complete it and with a Markdown code section to paste the output.\nYou are asked to describe the bug, although typically most of this information is covered in the subsequent sections in greater detail.\nYou are asked to paste a copy of your YAML configuration file rather than taking a picture of it. Its much more useful to paste such content because a screenshot does not allow anyone investigating the problem to copy, paste and reuse.\nA copy of the output is then requested to be pasted in, this should include as much information as possible about the failure.\nThe exact command used, typically I would expect this to be run_topostats --config_file <your_config>.yaml\nThen the TopoStats command, the operating system and Python version and finally, optionally the full Python environment with all package versions included."
+  },
+  {
+    "objectID": "index.html#any-questions",
+    "href": "index.html#any-questions",
+    "title": "TopoStats Tutorial : Virtual Environments & Git Branches",
+    "section": "Any Questions?",
+    "text": "Any Questions?\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nns-rse.github.io/topostats-tutorial/"
   }
 ]

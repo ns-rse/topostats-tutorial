@@ -8,7 +8,7 @@
 <link href="site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/quarto-contrib/qrcodejs-v1.0.0/qrcode.js"></script><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.1.251">
+  <meta name="generator" content="quarto-1.2.335">
 
   <meta name="author" content="Neil Shephard">
   <title>TopoStats Tutorial - TopoStats Tutorial : Virtual Environments &amp; Git Branches</title>
@@ -383,24 +383,28 @@
       margin-right: 0; 
     }
   </style>
-  <script src="site_libs/quarto-diagram/mermaid.min.js"></script>
-  <script src="site_libs/quarto-diagram/mermaid-init.js"></script>
-  <link href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 </head>
 <body class="quarto-dark">
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" class="center">
+<section id="title-slide" class="quarto-title-block center">
   <h1 class="title">TopoStats Tutorial : Virtual Environments &amp; Git Branches</h1>
-  <p class="author">Neil Shephard</p>
-</section>
 
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Neil Shephard 
+</div>
+</div>
+</div>
+
+</section>
 <section id="view-these-slides" class="slide level2">
 <h2>View these slides…</h2>
 <div id="qr1" class="qrcode"></div>
 <script type="text/javascript">
-var qrcode = new QRCode("qr1", {"colorLight":"#ffffff","width":"400","colorDark":"#000000","height":"400","text":"https://ns-rse.github.io/topostats-tutorial"});
+var qrcode = new QRCode("qr1", {"colorLight":"#ffffff","text":"https://ns-rse.github.io/topostats-tutorial","width":"400","colorDark":"#000000","height":"400"});
 </script>
     
 <p><a href="https://ns-rse.github.io/topostats-tutorial"><strong>https://ns-rse.github.io/topostats-tutorial</strong></a></p>
@@ -570,12 +574,12 @@ var qrcode = new QRCode("qr1", {"colorLight":"#ffffff","width":"400","colorDark"
 </section>
 <section id="version-control-a-digression" class="slide level2">
 <h2>Version Control… a digression</h2>
-<p>Comprehensive <a href="https://srse-git-github-zero2hero.netlify.app/">Git, GitHub and GitKraken : From Zero to Hero</a>.</p>
 <p>Hopefully you have already…</p>
 <ul>
 <li class="fragment">Setup GitHub account (<a href="https://github.com">https://github.com</a>) using University email address.</li>
-<li class="fragment">Download and install <a href="https://www.gitkraken.com/">GitKraken</a> using GitHub account associated with University email address.</li>
+<li class="fragment">Downloaded and install <a href="https://www.gitkraken.com/">GitKraken</a> using GitHub account associated with University email address.</li>
 </ul>
+<p>Comprehensive : <a href="https://srse-git-github-zero2hero.netlify.app/">Git, GitHub and GitKraken : From Zero to Hero</a>.</p>
 <aside class="notes">
 <p>The Research Software Engineering group run a comprehensive Git, GitHub and GitKraken course on a regular basis and I would highly recommend taking it (but then I would as I help run it!)</p>
 <p>It is the sort of course I wish I had taken when I started out using Git as it covers the basics of version control and then moves onto collaborative work and how to use GitHub to report Issues and dealing with some of the problems that might arise when working on code collabotatively.</p>
@@ -625,7 +629,7 @@ var qrcode = new QRCode("qr1", {"colorLight":"#ffffff","width":"400","colorDark"
 <section id="git-github" class="slide level2">
 <h2>Git &amp; GitHub</h2>
 
-<img data-src="./img/remotes.jpg" class="r-stretch"></section>
+<img data-src="./img/remotes_inverted.png" class="r-stretch"></section>
 <section id="cloning-topostats" class="slide level2">
 <h2>Cloning TopoStats</h2>
 <p>We’ll now clone TopoStats using GitKraken.</p>
@@ -639,6 +643,11 @@ var qrcode = new QRCode("qr1", {"colorLight":"#ffffff","width":"400","colorDark"
 </ul>
 <aside class="notes">
 <p>We’re now going to clone the GitHub repository using GitKraken, these are the steps to take, but we’re going to walk through them together to make sure everyone successfully clones the repository.</p>
+<p>Start up or switch to GitKraken and from the menu select <em>File &gt; Clone Repository</em> (you can also use the keyboard shortcut <code>Ctrl + N</code>).</p>
+<p>We want to clone from GitHub so select that.</p>
+<p>Then select a directory to clone to, I’m going to clone to <code>tmp</code> but you are welcome to choose any location you want.</p>
+<p>Next you need to select what repository to clone, you can start typing <code>Topo</code> and should see an autocompleted list of options. Select <code>TopoStats</code> from under <code>AFM-SPM</code> organisation.</p>
+<p>Once that is all set up Clone the repository using the green button. This will take a while once its done you should see a message saying “Successfully clonded repo ‘TopoStats’” and the option to “Open Now”. But we’ll take a break whilst that is downloading for everyone. Does anyone have any questions about anything so far?</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -664,9 +673,8 @@ var qrcode = new QRCode("qr1", {"colorLight":"#ffffff","width":"400","colorDark"
 </ul>
 </section>
 <aside class="notes">
-<p>Not that we have setup and activated a Virtual Environment and cloned the TopoStats repository its time to install it.</p>
-<p>Start a terminal (or Conda Powershell) and navigate to the location you installed TopoStats using <sub>cd</sub>.</p>
-<p>Check you have activated your Conda environment if not</p>
+<p>So far we have setup and activated a Virtual Environment and cloned the TopoStats repository its time to install it.</p>
+<p>Now we’re going to install TopoStats that we have cloned from Git into this environment.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -680,7 +688,7 @@ var qrcode = new QRCode("qr1", {"colorLight":"#ffffff","width":"400","colorDark"
       }</style></aside>
 <section id="installing-topostats-under-virtual-environments-1" class="slide level2 scrollable">
 <h2>Installing TopoStats under Virtual Environments</h2>
-<div class="sourceCode" id="cb2" data-code-line-numbers="|1|2|3|4|5|6"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1"></a><span class="bu">cd</span> ~/tmp/TopoStats</span>
+<div class="sourceCode" id="cb2" data-code-line-numbers="|1|2|3|4|5|6"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1"></a><span class="bu">cd</span> ~/tmp/topostats-tutorial/TopoStats</span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="fu">which</span> python</span>
 <span id="cb2-3"><a href="#cb2-3"></a><span class="ex">cond</span> activate topostats-git</span>
 <span id="cb2-4"><a href="#cb2-4"></a><span class="fu">git</span> status</span>
@@ -688,10 +696,9 @@ var qrcode = new QRCode("qr1", {"colorLight":"#ffffff","width":"400","colorDark"
 <span id="cb2-6"><a href="#cb2-6"></a><span class="ex">run_topostats</span> <span class="at">-h</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <aside class="notes">
-<p>Start a terminal (or Conda Powershell) and navigate to the location you installed TopoStats using <sub>cd</sub>.</p>
 <p>Check you have activated your Conda environment if not activate it.</p>
 <p>Use <code>git status</code> and check that you are on the <code>main</code> branch its shown on the first line of output.</p>
-<p>Now install TopoStats with the command <code>pip install -e .</code> and it should start downloading a bunch of files that TopoStats depends on then install all of them.</p>
+<p>Now install TopoStats with the command <code>pip install -e .</code> and it should start downloading a bunch of packages that TopoStats depends on then install all of them. The <code>.</code> means to install from the current directory whilst the <code>-e</code> flag tells Pip to install the package in what is known as “editable” format, and so rather than copying the files to a location under your virtual environment they are referenced from the current location.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -754,35 +761,37 @@ var qrcode = new QRCode("qr1", {"colorLight":"#ffffff","width":"400","colorDark"
       }</style></aside>
 <section id="run_topostats--q" class="slide level2">
 <h2><code>run_topostats -q</code></h2>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">(</span><span class="ex">topostats</span><span class="kw">)</span> <span class="ex">❱</span> run_topostats <span class="at">-q</span></span>
-<span id="cb4-2"><a href="#cb4-2"></a><span class="ex">~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span> COMPLETE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
-<span id="cb4-3"><a href="#cb4-3"></a></span>
-<span id="cb4-4"><a href="#cb4-4"></a>  <span class="ex">TopoStats</span> Version           : 2.0.1.dev384+g365c6dd.d20230310</span>
-<span id="cb4-5"><a href="#cb4-5"></a>  <span class="ex">Base</span> Directory              : /home/neil/work/projects/topostats/TopoStats</span>
-<span id="cb4-6"><a href="#cb4-6"></a>  <span class="ex">File</span> Extension              : .spm</span>
-<span id="cb4-7"><a href="#cb4-7"></a>  <span class="ex">Files</span> Found                 : 1</span>
-<span id="cb4-8"><a href="#cb4-8"></a>  <span class="ex">Successfully</span> Processed^1    : 1 <span class="er">(</span><span class="ex">100.0%</span><span class="kw">)</span></span>
-<span id="cb4-9"><a href="#cb4-9"></a>  <span class="ex">Configuration</span>               : output/config.yaml</span>
-<span id="cb4-10"><a href="#cb4-10"></a>  <span class="ex">All</span> statistics              : output/all_statistics.csv</span>
-<span id="cb4-11"><a href="#cb4-11"></a>  <span class="ex">Distribution</span> Plots          : output/summary_distributions</span>
-<span id="cb4-12"><a href="#cb4-12"></a></span>
-<span id="cb4-13"><a href="#cb4-13"></a>  <span class="ex">Email</span>                       : topostats@sheffield.ac.uk</span>
-<span id="cb4-14"><a href="#cb4-14"></a>  <span class="ex">Documentation</span>               : https://afm-spm.github.io/topostats/</span>
-<span id="cb4-15"><a href="#cb4-15"></a>  <span class="ex">Source</span> Code                 : https://github.com/AFM-SPM/TopoStats/</span>
-<span id="cb4-16"><a href="#cb4-16"></a>  <span class="ex">Bug</span> Reports/Feature Request : https://github.com/AFM-SPM/TopoStats/issues/new/choose</span>
-<span id="cb4-17"><a href="#cb4-17"></a>  <span class="ex">Citation</span> File Format        : https://github.com/AFM-SPM/TopoStats/blob/main/CITATION.cff</span>
-<span id="cb4-18"><a href="#cb4-18"></a></span>
-<span id="cb4-19"><a href="#cb4-19"></a>  <span class="ex">^1</span> Successful processing of an image is detection of grains and calculation of at least</span>
-<span id="cb4-20"><a href="#cb4-20"></a>     <span class="ex">grain</span> statistics. If these have been disabled the percentage will be 0.</span>
-<span id="cb4-21"><a href="#cb4-21"></a></span>
-<span id="cb4-22"><a href="#cb4-22"></a>  <span class="ex">If</span> you encounter bugs/issues or have feature requests please report them at the above URL</span>
-<span id="cb4-23"><a href="#cb4-23"></a>  <span class="ex">or</span> email us.</span>
-<span id="cb4-24"><a href="#cb4-24"></a></span>
-<span id="cb4-25"><a href="#cb4-25"></a>  <span class="ex">If</span> you have found TopoStats useful please consider citing it. A Citation File Format is</span>
-<span id="cb4-26"><a href="#cb4-26"></a>  <span class="ex">linked</span> above and available from the Source Code page.</span>
-<span id="cb4-27"><a href="#cb4-27"></a><span class="ex">~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">(</span><span class="ex">topostats</span><span class="kw">)</span> <span class="ex">❱</span> run_topostats <span class="at">--log_level</span> warning</span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="ex">[Mon,</span> 13 Mar 2023 14:01:01] [INFO    ] [topostats] Updated config config[log_level] : info <span class="op">&gt;</span> warning</span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="ex">Processing</span> images from /home/neil/work/projects/topostats/TopoStats, results are under output: 100%<span class="kw">|</span><span class="ex">████████</span><span class="kw">|</span> <span class="ex">1/1</span> [00:00<span class="op">&lt;</span><span class="pp">?</span>, <span class="pp">?</span>it/s]</span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="ex">~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span> COMPLETE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<span id="cb4-5"><a href="#cb4-5"></a></span>
+<span id="cb4-6"><a href="#cb4-6"></a>  <span class="ex">TopoStats</span> Version           : 2.0.1.dev384+g365c6dd.d20230310</span>
+<span id="cb4-7"><a href="#cb4-7"></a>  <span class="ex">Base</span> Directory              : /home/neil/work/projects/topostats/TopoStats</span>
+<span id="cb4-8"><a href="#cb4-8"></a>  <span class="ex">File</span> Extension              : .spm</span>
+<span id="cb4-9"><a href="#cb4-9"></a>  <span class="ex">Files</span> Found                 : 1</span>
+<span id="cb4-10"><a href="#cb4-10"></a>  <span class="ex">Successfully</span> Processed^1    : 1 <span class="er">(</span><span class="ex">100.0%</span><span class="kw">)</span></span>
+<span id="cb4-11"><a href="#cb4-11"></a>  <span class="ex">Configuration</span>               : output/config.yaml</span>
+<span id="cb4-12"><a href="#cb4-12"></a>  <span class="ex">All</span> statistics              : output/all_statistics.csv</span>
+<span id="cb4-13"><a href="#cb4-13"></a>  <span class="ex">Distribution</span> Plots          : output/summary_distributions</span>
+<span id="cb4-14"><a href="#cb4-14"></a></span>
+<span id="cb4-15"><a href="#cb4-15"></a>  <span class="ex">Email</span>                       : topostats@sheffield.ac.uk</span>
+<span id="cb4-16"><a href="#cb4-16"></a>  <span class="ex">Documentation</span>               : https://afm-spm.github.io/topostats/</span>
+<span id="cb4-17"><a href="#cb4-17"></a>  <span class="ex">Source</span> Code                 : https://github.com/AFM-SPM/TopoStats/</span>
+<span id="cb4-18"><a href="#cb4-18"></a>  <span class="ex">Bug</span> Reports/Feature Request : https://github.com/AFM-SPM/TopoStats/issues/new/choose</span>
+<span id="cb4-19"><a href="#cb4-19"></a>  <span class="ex">Citation</span> File Format        : https://github.com/AFM-SPM/TopoStats/blob/main/CITATION.cff</span>
+<span id="cb4-20"><a href="#cb4-20"></a></span>
+<span id="cb4-21"><a href="#cb4-21"></a>  <span class="ex">^1</span> Successful processing of an image is detection of grains and calculation of at least</span>
+<span id="cb4-22"><a href="#cb4-22"></a>     <span class="ex">grain</span> statistics. If these have been disabled the percentage will be 0.</span>
+<span id="cb4-23"><a href="#cb4-23"></a></span>
+<span id="cb4-24"><a href="#cb4-24"></a>  <span class="ex">If</span> you encounter bugs/issues or have feature requests please report them at the above URL</span>
+<span id="cb4-25"><a href="#cb4-25"></a>  <span class="ex">or</span> email us.</span>
+<span id="cb4-26"><a href="#cb4-26"></a></span>
+<span id="cb4-27"><a href="#cb4-27"></a>  <span class="ex">If</span> you have found TopoStats useful please consider citing it. A Citation File Format is</span>
+<span id="cb4-28"><a href="#cb4-28"></a>  <span class="ex">linked</span> above and available from the Source Code page.</span>
+<span id="cb4-29"><a href="#cb4-29"></a><span class="ex">~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <aside class="notes">
-<p>You are now ready to <code>run_topostats</code>. If you <code>cd</code>, change directory, to a location you have some scans you can simply invoke <code>run_topostats</code> and it will use the default configuration to scan for <code>.spm</code> files and process any that are found within your current working directory. If you use the <code>-q</code> or <code>--quiet</code> flag it will be considerably less verbose, but it can often be useful to be verbose, particularly when submitting issues which we will come to in a bit.</p>
+<p>You are now ready to <code>run_topostats</code>. If you <code>cd</code>, change directory, to a location you have some scans you can simply invoke <code>run_topostats</code> and it will use the default configuration to scan for <code>.spm</code> files and process any that are found within your current working directory. If you use the <code>-l warning</code> or <code>--log_level warning</code> flag it will be considerably less verbose, but it can often be useful to be verbose, particularly when submitting issues which we will come to in a bit.</p>
 <p>You may encounter some errors, if you’re lucky you won’t and on completion TopoStats reports how many files it found, how many it processed and where output is stored.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -890,48 +899,54 @@ var qrcode = new QRCode("qr1", {"colorLight":"#ffffff","width":"400","colorDark"
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<section id="testing-new-features---git-branches" class="slide level2 scrollable">
-<h2>Testing New Features - Git Branches</h2>
-<div class="cell" data-reveal="true" data-fig-height="2">
-<div class="cell-output-display">
-<div>
-<p>
-</p><pre class="mermaid" data-tooltip-selector="#mermaid-tooltip-1">%%{init: { 'logLevel': 'debug', 'theme': 'base', 'gitGraph': {'showBranches': true,'showCommitLabel': true, 'rotateCommitLabel': true}} }%%
-gitGraph
-    commit
-    commit
-    branch bug1
-    checkout main
-    commit
-    checkout bug1
-    commit
-    commit
-    checkout main
-    branch feature1
-    checkout feature1
-    commit
-    commit
-    checkout bug1
-    commit
-    checkout main
-    merge bug1 tag: "v0.1.1"
-    checkout feature1
-    commit
-    commit
-    checkout main
-    merge feature1 tag: "v0.1.2"
-    commit
-</pre>
-<div id="mermaid-tooltip-1" class="mermaidTooltip">
-
-</div>
-<p></p>
-</div>
-</div>
-</div>
+<section id="run_topostats---config_file" class="slide level2 scrollable">
+<h2><code>run_topostats --config_file</code></h2>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1"></a><span class="ex">run_topostats</span> <span class="at">--config_file</span> dummy_config.yaml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <aside class="notes">
-<p>We now return to Git because in order to test new features you need to be able to switch between what is known as branches.</p>
+<p>To use the configuration file you have just created you use the <code>--config_file</code> flat and give it the name of your file.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<section id="testing-new-features---git-branches" class="slide level2 scrollable">
+<h2>Testing New Features - Git Branches</h2>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource {mermaid} number-lines code-with-copy"><code class="sourceCode"><span id="cb7-1"><a href="#cb7-1"></a>%%| fig-height: 2</span>
+<span id="cb7-2"><a href="#cb7-2"></a>%%{init: { 'logLevel': 'debug', 'theme': 'base', 'gitGraph': {'showBranches': true,'showCommitLabel': true, 'rotateCommitLabel': true}} }%%</span>
+<span id="cb7-3"><a href="#cb7-3"></a>gitGraph</span>
+<span id="cb7-4"><a href="#cb7-4"></a>    commit</span>
+<span id="cb7-5"><a href="#cb7-5"></a>    commit</span>
+<span id="cb7-6"><a href="#cb7-6"></a>    branch bug1</span>
+<span id="cb7-7"><a href="#cb7-7"></a>    checkout main</span>
+<span id="cb7-8"><a href="#cb7-8"></a>    commit</span>
+<span id="cb7-9"><a href="#cb7-9"></a>    checkout bug1</span>
+<span id="cb7-10"><a href="#cb7-10"></a>    commit</span>
+<span id="cb7-11"><a href="#cb7-11"></a>    commit</span>
+<span id="cb7-12"><a href="#cb7-12"></a>    checkout main</span>
+<span id="cb7-13"><a href="#cb7-13"></a>    branch feature1</span>
+<span id="cb7-14"><a href="#cb7-14"></a>    checkout feature1</span>
+<span id="cb7-15"><a href="#cb7-15"></a>    commit</span>
+<span id="cb7-16"><a href="#cb7-16"></a>    commit</span>
+<span id="cb7-17"><a href="#cb7-17"></a>    checkout bug1</span>
+<span id="cb7-18"><a href="#cb7-18"></a>    commit</span>
+<span id="cb7-19"><a href="#cb7-19"></a>    checkout main</span>
+<span id="cb7-20"><a href="#cb7-20"></a>    merge bug1 tag: "v0.1.1"</span>
+<span id="cb7-21"><a href="#cb7-21"></a>    checkout feature1</span>
+<span id="cb7-22"><a href="#cb7-22"></a>    commit</span>
+<span id="cb7-23"><a href="#cb7-23"></a>    commit</span>
+<span id="cb7-24"><a href="#cb7-24"></a>    checkout main</span>
+<span id="cb7-25"><a href="#cb7-25"></a>    merge feature1 tag: "v0.1.2"</span>
+<span id="cb7-26"><a href="#cb7-26"></a>    commit</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<aside class="notes">
+<p>We now return to Git because in order to test new features you need to be able to switch between what is known in Git parlance as branches.</p>
 <p>Git allows concurrent development of features and to do so uses the concept of branches which are shown in this diagram.</p>
 <p>A branch “forks” from the <code>main</code> branch at a certain point, features are developed and stored in the Git version control system via commits which are represented by each of these strange alpha-numeric characters which are known as commits (they typically have human readable comments associated with them so they are more intelligible).</p>
 <p>Once a feature is ready a “Pull Request” is created to be reviewed by others and once approved its merged back into the <code>main</code> branch.</p>
@@ -949,13 +964,14 @@ gitGraph
       }</style></aside>
 <section id="gitkraken-changing-branches" class="slide level2 scrollable">
 <h2>GitKraken Changing Branches</h2>
-<p>You can use GitKraken to switch branches, switch to <code>topostats-git</code>.</p>
+<p>You can use GitKraken to switch branches use switch to <code>topostats-git</code>.</p>
 <p>Make sure you re-install TopoStats after switching branches (sometimes <code>pip install -e .</code> <em>doesn’t</em> pick up the changes Git makes).</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1"></a><span class="bu">cd</span> ~/tmp/TopoStats</span>
-<span id="cb6-2"><a href="#cb6-2"></a><span class="ex">pip</span> install <span class="at">-e</span> .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1"></a><span class="bu">cd</span> ~/tmp/TopoStats</span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="ex">pip</span> install <span class="at">-e</span> .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <aside class="notes">
-<p>Switch branches using Git Kraken.</p>
+<p>Switch branches using Git Kraken. There are several ways of doing this but the easiest is to find the commit in the <code>Branch/Tag</code> column on the left, right-click on it and select “Checkout origin/<branch-name>” in this case <code>topostats-git</code>. This pulls down all changes from that branch and checks it out. You see that there is a laptop which indicates that your local computer has a copy of the branch at that particular commit and the tick indicates that you are checked out there. The other icon is the AFM-SPM GitHub organisation logo and indicates where that branch is on Git Hub.</branch-name></p>
+<p>Once you’ve done this at the top you should see you are <em>Repository &gt; topostats-git</em> and if you want to get back to <em>main</em> you can select it from the drop down menu under Branch.</p>
 <p>In the background Git changes the files so they match those on the branch, you don’t need to look for these changes, just be aware that they happen.</p>
 <p>After switching branches its sometimes required to reinstall TopoStats, in theory this shouldn’t be required the <code>-e</code> flat used when installing means <code>editable</code> and it should just work with the files Git changed, but I’ve found in the past this didn’t always appear to be the case so I’m now in the habit of reinstalling and it doesn’t do any harm.</p>
 <style type="text/css">
@@ -969,20 +985,23 @@ gitGraph
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<p>::: {.scrollable} ## Re-run <code>run_topostats</code></p>
+<section id="re-run-run_topostats" class="slide level2 scrollable">
+<h2>Re-run <code>run_topostats</code></h2>
 <p>Re-run <code>run_topostats</code></p>
-<p>. . .</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1"></a><span class="ex">Traceback</span> <span class="er">(</span><span class="ex">most</span> recent call last<span class="kw">)</span><span class="bu">:</span></span>
-<span id="cb7-2"><a href="#cb7-2"></a>  <span class="ex">File</span> <span class="st">"/home/neil/.virtualenvs/topostats/bin/run_topostats"</span>, line 8, in <span class="op">&lt;</span>module<span class="op">&gt;</span></span>
-<span id="cb7-3"><a href="#cb7-3"></a>    <span class="ex">sys.exit</span><span class="er">(</span><span class="fu">main()</span><span class="kw">)</span></span>
-<span id="cb7-4"><a href="#cb7-4"></a>  <span class="ex">File</span> <span class="st">"/home/neil/work/projects/topostats/TopoStats/topostats/run_topostats.py"</span>, line 213, in main</span>
-<span id="cb7-5"><a href="#cb7-5"></a>    <span class="ex">print</span><span class="er">(</span><span class="ex">f</span><span class="st">"Can we divide 2 by 0? {2/0}"</span><span class="kw">)</span></span>
-<span id="cb7-6"><a href="#cb7-6"></a><span class="ex">ZeroDivisionError:</span> division by zero</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="fragment">
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1"></a><span class="ex">Traceback</span> <span class="er">(</span><span class="ex">most</span> recent call last<span class="kw">)</span><span class="bu">:</span></span>
+<span id="cb9-2"><a href="#cb9-2"></a>  <span class="ex">File</span> <span class="st">"/home/neil/.virtualenvs/topostats/bin/run_topostats"</span>, line 8, in <span class="op">&lt;</span>module<span class="op">&gt;</span></span>
+<span id="cb9-3"><a href="#cb9-3"></a>    <span class="ex">sys.exit</span><span class="er">(</span><span class="fu">main()</span><span class="kw">)</span></span>
+<span id="cb9-4"><a href="#cb9-4"></a>  <span class="ex">File</span> <span class="st">"/home/neil/work/projects/topostats/TopoStats/topostats/run_topostats.py"</span>, line 213, in main</span>
+<span id="cb9-5"><a href="#cb9-5"></a>    <span class="ex">print</span><span class="er">(</span><span class="ex">f</span><span class="st">"Can we divide 2 by 0? {2/0}"</span><span class="kw">)</span></span>
+<span id="cb9-6"><a href="#cb9-6"></a><span class="ex">ZeroDivisionError:</span> division by zero</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
 <aside class="notes">
 <p>If you now re-run <code>run_topostats</code> as you previously did you should get a different result, can anyone tell me what happens?</p>
-<p>You should have seen that the last message was</p>
+<p>You should have seen that the last message was <code>ZeroDivisonError: division by zero</code>.</p>
 <p>Ok, that is good, and by design I set this branch up so that it would purposefully fail. Python raises such errors because you can not divide any number by zero is undefined because you can not multiply any number by zero to get 2.</p>
-<p>This isn’t a great example but it shows how switching branches can result in failures, and it is hoped that after this tutorial you are able to test new feature branches or bug fixes, but what would you do with such a failure if you encounter one whether that is on the <code>main</code> branch or a feature branch?</p>
+<p>This isn’t a great example but it shows how switching branches can result in failures, and it is hoped that after this tutorial you are able to test new feature branches or bug fixes, but what would you do with such a failure if you encounter one whether that is on the `main** branch or a feature branch?</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -996,9 +1015,18 @@ gitGraph
       }</style></aside>
 <section id="github---reporting-issues" class="slide level2">
 <h2>GitHub - Reporting Issues</h2>
-<p>Please report bugs on GitHub</p>
+<ul>
+<li class="fragment">Reporting bugs helps with feature development.</li>
+<li class="fragment">Removes them not just for you but for all users.</li>
+<li class="fragment">Can seem cumbersome at first but it gets easier with practice.</li>
+</ul>
+<div class="fragment">
+<p><strong>SOLUTION</strong> : GitHub Issues…<a href="https://github.com/AFM-SPM/TopoStats/issues">https://github.com/AFM-SPM/TopoStats/issues</a></p>
 <aside class="notes">
-
+<p>Reporting bugs and indeed new feature requests is really important, it helps those who are developing the code deal with issues and scenarios they might not have anticipated and without feedback the problems persist for all users so its not just for your benefit but for everyones that such problems get identified early, reported and fixed.</p>
+<p>The process can seem cumbersome at first but with practice it gets easier and we have written templates to ease the process.</p>
+<p>You can do this from within GitKraken but doing so means you can’t take advantage of the Issue Templates we have setup.</p>
+<p>Instead we’re going to go through the process on GitHub.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1010,6 +1038,85 @@ gitGraph
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
+</div>
+</section>
+<section id="github---reporting-issues-1" class="slide level2">
+<h2>GitHub - Reporting Issues</h2>
+
+<img data-src="./img/github_issues.png" class="r-stretch"><aside class="notes">
+<p>In the repository on GitHub there are tabs for “<em>Code</em>”, “<em>Issues</em>” and so forth, you want to select the “<em>Issues</em>” tab, and you will see a list of existing issues.</p>
+<p>On the top right is a button to report a “<em>New Issue</em>”, click on this and you are presented with some options to use some pre-defined templates to report issues.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="github---reporting-issues-cont." class="slide level2">
+<h2>GitHub - Reporting Issues (<em>cont.</em>)</h2>
+
+<img data-src="./img/github_issues_templates.png" class="r-stretch"><p><strong>Markdown Links</strong></p>
+<ul>
+<li class="fragment"><a href="https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github">Getting started with writing and formatting on GitHub - GitHub Docs</a></li>
+<li class="fragment"><a href="https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax">Basic writing and formatting syntax - GitHub Docs</a></li>
+<li class="fragment"><a href="https://www.markdownguide.org/cheat-sheet">Markdown Cheat Sheet | Markdown Guide</a></li>
+</ul>
+<aside class="notes">
+<p>We have setup templates to report Bugs, make a new feature request and you may or may not see the one for reporting a vulnerability. For this exercise we want to use the Bug Report form so clock on the “<em>Get Started</em>” button for that.</p>
+<p>You get a page which has a box for a title where you should put a short but descriptive title for the bug report that captures the essence of what you are reporting.</p>
+<p>There is then a box that is pre-populated with text in Markdown Format. If you haven’t come across Markdown before don’t worry its pretty simple and there are some links to get you started in using the formatting.</p>
+<p>The text is descriptive and walks you through the various steps for providing different aspects of information about the error you have encountered.</p>
+<p>At any stage you can click on the “<em>Preview</em>” tab and see what the page looks like.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="github---reporting-issues-cont.-1" class="slide level2">
+<h2>GitHub - Reporting Issues (<em>cont.</em>)</h2>
+<ul>
+<li class="fragment">Describe the bug.</li>
+<li class="fragment">Include the configuration file.</li>
+<li class="fragment">Copy of the output.</li>
+<li class="fragment">Exact command that failed.</li>
+<li class="fragment">TopoStats version</li>
+<li class="fragment">Operating System and Python Version</li>
+<li class="fragment">Optional Python packages that are installed.</li>
+</ul>
+<aside class="notes">
+<p>You are asked to tick off various tasks as completed and there is a section for each describing in a bit more detail how to complete it and with a Markdown code section to paste the output.</p>
+<p>You are asked to describe the bug, although typically most of this information is covered in the subsequent sections in greater detail.</p>
+<p>You are asked to paste a copy of your YAML configuration file rather than taking a picture of it. Its much more useful to paste such content because a screenshot does not allow anyone investigating the problem to copy, paste and reuse.</p>
+<p>A copy of the output is then requested to be pasted in, this should include as much information as possible about the failure.</p>
+<p>The exact command used, typically I would expect this to be <code>run_topostats --config_file &lt;your_config&gt;.yaml</code></p>
+<p>Then the TopoStats command, the operating system and Python version and finally, optionally the full Python environment with all package versions included.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="any-questions" class="slide level2">
+<h2>Any Questions?</h2>
 <!-- Slide templates -->
 <!-- ::: {.scrollable} -->
 <!-- ## <TITLE> -->
@@ -1286,7 +1393,24 @@ gitGraph
         button.classList.add('code-copy-button-checked');
         var currentTitle = button.getAttribute("title");
         button.setAttribute("title", "Copied!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copied!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
         setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
           button.setAttribute("title", currentTitle);
           button.classList.remove('code-copy-button-checked');
         }, 1000);
@@ -1324,24 +1448,42 @@ gitGraph
           return note.innerHTML;
         });
       }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
       var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
       for (var i=0; i<bibliorefs.length; i++) {
         const ref = bibliorefs[i];
-        const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-        tippyHover(ref, function() {
-          var popup = window.document.createElement('div');
-          cites.forEach(function(cite) {
-            var citeDiv = window.document.createElement('div');
-            citeDiv.classList.add('hanging-indent');
-            citeDiv.classList.add('csl-entry');
-            var biblioDiv = window.document.getElementById('ref-' + cite);
-            if (biblioDiv) {
-              citeDiv.innerHTML = biblioDiv.innerHTML;
-            }
-            popup.appendChild(citeDiv);
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
           });
-          return popup.innerHTML;
-        });
+        }
       }
     });
     </script>
