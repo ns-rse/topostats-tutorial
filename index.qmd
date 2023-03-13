@@ -261,7 +261,7 @@ cd ~/tmp/topostats-tutorial/TopoStats
 which python
 cond activate topostats-git
 git status
-pip install -e .
+pip install -e .  # Install additional requirements e.g. .[tests]
 run_topostats -h
 ```
 :::
@@ -275,6 +275,9 @@ Now install TopoStats with the command `pip install -e .` and it should start do
 TopoStats depends on then install all of them. The `.` means to install from the current directory whilst the `-e` flag
 tells Pip to install the package in what is known as "editable" format, and so rather than copying the files to a
 location under your virtual environment they are referenced from the current location.
+
+There are additional requirements that can be installed, for example if you wanted to include the dependencies require
+for running tests you would use `.[tests]`.
 :::
 
 ::: {.scrollable}
@@ -692,6 +695,21 @@ The exact command used, typically I would expect this to be `run_topostats --con
 Then the TopoStats command, the operating system and Python version and finally, optionally the full Python environment
 with all package versions included.
 :::
+
+## Exercise 1 - Tests
+
+1. Create a new Conda environment called `test`.
+2. Checkout `topostats-test` branch.
+3. Install TopoStats and include the test dependencies.
+4. Run the test suite with `pytest`
+
+
+## Exercise 2 - Surprise
+
+1. Create a new Conda environment called `surpriste`.
+2. Checkout `topostats-surprirse` branch.
+3. Install TopoStats.
+4. Run TopoStats.
 
 ## Any Questions?
 

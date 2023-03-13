@@ -18,6 +18,8 @@ jobs:
           tinytex: true
           # uncomment below and fill to pin a version
           version: 1.2.335
+
+      - name: Install Quarto Extensions
         run:
           quarto install --no-prompt extension jmbuhr/quarto-qrcode
 
