@@ -6,7 +6,7 @@ from: markdown+emoji
 format:
   revealjs:
     incremental: true
-    theme: night # solarized | dark | night | league | sky
+    theme: dark # solarized | dark | night | league | sky
     slide-number: true
     show-slide-number: speaker
     # embed-resources: true
@@ -154,7 +154,7 @@ These all work in isolation, it just depedns which one has been activated.
 Hopefully you have already...
 
 + Setup GitHub account ([https://github.com](https://github.com)) using University email address.
-+ Downloaded and install  [GitKraken](https://www.gitkraken.com/) using GitHub account associated with University email
++ Downloaded and installed [GitKraken](https://www.gitkraken.com/) using GitHub account associated with University email
   address.
 
 Comprehensive : [Git, GitHub and GitKraken : From Zero to Hero](https://srse-git-github-zero2hero.netlify.app/).
@@ -165,7 +165,7 @@ would highly recommend taking it (but then I would as I help run it!)
 
 It is the sort of course I wish I had taken when I started out using Git as it covers the basics of version control and
 then moves onto collaborative work and how to use GitHub to report Issues and dealing with some of the problems that
-might arise when working on code collabotatively.
+might arise when working on code collaboratively.
 
 Some of these aspects aren't necessary for what we are covering today but I feel they are useful to be aware of so I'd
 encourage you to take the course.
@@ -259,7 +259,7 @@ Now we're going to install TopoStats that we have cloned from Git into this envi
 ```{.bash code-line-numbers="|1|2|3|4|5|6"}
 cd ~/tmp/topostats-tutorial/TopoStats
 which python
-cond activate topostats-git
+conda activate topostats-git
 git status
 pip install -e .  # Install additional requirements e.g. .[tests]
 run_topostats -h
@@ -473,7 +473,7 @@ parameters, save and then use it.
 
 ``` {.bash}
 run_topostats --config_file dummy_config.yaml
-````
+```
 :::
 
 
