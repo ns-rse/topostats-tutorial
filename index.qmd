@@ -6,7 +6,7 @@ from: markdown+emoji
 format:
   revealjs:
     incremental: true
-    theme: dark # solarized | dark | night | league | sky
+    theme: night # solarized | dark | night | league | sky
     slide-number: true
     show-slide-number: speaker
     # embed-resources: true
