@@ -383,6 +383,9 @@
       margin-right: 0; 
     }
   </style>
+  <script src="site_libs/quarto-diagram/mermaid.min.js"></script>
+  <script src="site_libs/quarto-diagram/mermaid-init.js"></script>
+  <link href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 </head>
 <body class="quarto-dark">
   <div class="reveal">
@@ -404,7 +407,7 @@ Neil Shephard
 <h2>View these slides…</h2>
 <div id="qr1" class="qrcode"></div>
 <script type="text/javascript">
-var qrcode = new QRCode("qr1", {"text":"https://ns-rse.github.io/topostats-tutorial","width":"400","height":"400","colorDark":"#000000","colorLight":"#ffffff"});
+var qrcode = new QRCode("qr1", {"colorDark":"#000000","height":"400","text":"https://ns-rse.github.io/topostats-tutorial","colorLight":"#ffffff","width":"400"});
 </script>
     
 <p><a href="https://ns-rse.github.io/topostats-tutorial"><strong>https://ns-rse.github.io/topostats-tutorial</strong></a></p>
@@ -577,12 +580,12 @@ var qrcode = new QRCode("qr1", {"text":"https://ns-rse.github.io/topostats-tutor
 <p>Hopefully you have already…</p>
 <ul>
 <li class="fragment">Setup GitHub account (<a href="https://github.com">https://github.com</a>) using University email address.</li>
-<li class="fragment">Downloaded and install <a href="https://www.gitkraken.com/">GitKraken</a> using GitHub account associated with University email address.</li>
+<li class="fragment">Downloaded and installed <a href="https://www.gitkraken.com/">GitKraken</a> using GitHub account associated with University email address.</li>
 </ul>
 <p>Comprehensive : <a href="https://srse-git-github-zero2hero.netlify.app/">Git, GitHub and GitKraken : From Zero to Hero</a>.</p>
 <aside class="notes">
 <p>The Research Software Engineering group run a comprehensive Git, GitHub and GitKraken course on a regular basis and I would highly recommend taking it (but then I would as I help run it!)</p>
-<p>It is the sort of course I wish I had taken when I started out using Git as it covers the basics of version control and then moves onto collaborative work and how to use GitHub to report Issues and dealing with some of the problems that might arise when working on code collabotatively.</p>
+<p>It is the sort of course I wish I had taken when I started out using Git as it covers the basics of version control and then moves onto collaborative work and how to use GitHub to report Issues and dealing with some of the problems that might arise when working on code collaboratively.</p>
 <p>Some of these aspects aren’t necessary for what we are covering today but I feel they are useful to be aware of so I’d encourage you to take the course.</p>
 <p>Hopefully you have already setup a GitHub account and installed GitKarken.</p>
 <p>That said we’re going to make a lightening digression into version control, what it is, why it matters to TopoStats development and how it impacts testing new features.</p>
@@ -690,15 +693,15 @@ var qrcode = new QRCode("qr1", {"text":"https://ns-rse.github.io/topostats-tutor
 <h2>Installing TopoStats under Virtual Environments</h2>
 <div class="sourceCode" id="cb2" data-code-line-numbers="|1|2|3|4|5|6"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1"></a><span class="bu">cd</span> ~/tmp/topostats-tutorial/TopoStats</span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="fu">which</span> python</span>
-<span id="cb2-3"><a href="#cb2-3"></a><span class="ex">cond</span> activate topostats-git</span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="ex">conda</span> activate topostats-git</span>
 <span id="cb2-4"><a href="#cb2-4"></a><span class="fu">git</span> status</span>
-<span id="cb2-5"><a href="#cb2-5"></a><span class="ex">pip</span> install <span class="at">-e</span> .  <span class="co"># Install additional requirements e.g. .[tests]</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="ex">pip</span> install <span class="at">-e</span> .[notebooks]  <span class="co"># Install additional requirements e.g. .[tests]</span></span>
 <span id="cb2-6"><a href="#cb2-6"></a><span class="ex">run_topostats</span> <span class="at">-h</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <aside class="notes">
 <p>Check you have activated your Conda environment if not activate it.</p>
 <p>Use <code>git status</code> and check that you are on the <code>main</code> branch its shown on the first line of output.</p>
-<p>Now install TopoStats with the command <code>pip install -e .</code> and it should start downloading a bunch of packages that TopoStats depends on then install all of them. The <code>.</code> means to install from the current directory whilst the <code>-e</code> flag tells Pip to install the package in what is known as “editable” format, and so rather than copying the files to a location under your virtual environment they are referenced from the current location.</p>
+<p>Now install TopoStats with the command <code>pip install -e .[notebooks]</code> and it should start downloading a bunch of packages that TopoStats depends on then install all of them. The <code>[notebooks]</code> tells <code>pip</code> to also install some extra packages we’ve defined that are useful for running sample Notebook. The <code>.</code> means to install from the current directory whilst the <code>-e</code> flag tells Pip to install the package in what is known as “editable” format, and so rather than copying the files to a location under your virtual environment they are referenced from the current location.</p>
 <p>There are additional requirements that can be installed, for example if you wanted to include the dependencies require for running tests you would use <code>.[tests]</code>.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -919,32 +922,43 @@ var qrcode = new QRCode("qr1", {"text":"https://ns-rse.github.io/topostats-tutor
       }</style></aside>
 <section id="testing-new-features---git-branches" class="slide level2 scrollable">
 <h2>Testing New Features - Git Branches</h2>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource {mermaid} number-lines code-with-copy"><code class="sourceCode"><span id="cb7-1"><a href="#cb7-1"></a>%%| fig-height: 2</span>
-<span id="cb7-2"><a href="#cb7-2"></a>%%{init: { 'logLevel': 'debug', 'theme': 'base', 'gitGraph': {'showBranches': true,'showCommitLabel': true, 'rotateCommitLabel': true}} }%%</span>
-<span id="cb7-3"><a href="#cb7-3"></a>gitGraph</span>
-<span id="cb7-4"><a href="#cb7-4"></a>    commit</span>
-<span id="cb7-5"><a href="#cb7-5"></a>    commit</span>
-<span id="cb7-6"><a href="#cb7-6"></a>    branch bug1</span>
-<span id="cb7-7"><a href="#cb7-7"></a>    checkout main</span>
-<span id="cb7-8"><a href="#cb7-8"></a>    commit</span>
-<span id="cb7-9"><a href="#cb7-9"></a>    checkout bug1</span>
-<span id="cb7-10"><a href="#cb7-10"></a>    commit</span>
-<span id="cb7-11"><a href="#cb7-11"></a>    commit</span>
-<span id="cb7-12"><a href="#cb7-12"></a>    checkout main</span>
-<span id="cb7-13"><a href="#cb7-13"></a>    branch feature1</span>
-<span id="cb7-14"><a href="#cb7-14"></a>    checkout feature1</span>
-<span id="cb7-15"><a href="#cb7-15"></a>    commit</span>
-<span id="cb7-16"><a href="#cb7-16"></a>    commit</span>
-<span id="cb7-17"><a href="#cb7-17"></a>    checkout bug1</span>
-<span id="cb7-18"><a href="#cb7-18"></a>    commit</span>
-<span id="cb7-19"><a href="#cb7-19"></a>    checkout main</span>
-<span id="cb7-20"><a href="#cb7-20"></a>    merge bug1 tag: "v0.1.1"</span>
-<span id="cb7-21"><a href="#cb7-21"></a>    checkout feature1</span>
-<span id="cb7-22"><a href="#cb7-22"></a>    commit</span>
-<span id="cb7-23"><a href="#cb7-23"></a>    commit</span>
-<span id="cb7-24"><a href="#cb7-24"></a>    checkout main</span>
-<span id="cb7-25"><a href="#cb7-25"></a>    merge feature1 tag: "v0.1.2"</span>
-<span id="cb7-26"><a href="#cb7-26"></a>    commit</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-reveal="true" data-fig-height="2">
+<div class="cell-output-display">
+<div>
+<p>
+</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-1">%%{init: { 'logLevel': 'debug', 'theme': 'base', 'gitGraph': {'showBranches': true,'showCommitLabel': true, 'rotateCommitLabel': true}} }%%
+gitGraph
+    commit
+    commit
+    branch bug1
+    checkout main
+    commit
+    checkout bug1
+    commit
+    commit
+    checkout main
+    branch feature1
+    checkout feature1
+    commit
+    commit
+    checkout bug1
+    commit
+    checkout main
+    merge bug1 tag: "v0.1.1"
+    checkout feature1
+    commit
+    commit
+    checkout main
+    merge feature1 tag: "v0.1.2"
+    commit
+</pre>
+<div id="mermaid-tooltip-1" class="mermaidTooltip">
+
+</div>
+<p></p>
+</div>
+</div>
+</div>
 </section>
 <aside class="notes">
 <p>We now return to Git because in order to test new features you need to be able to switch between what is known in Git parlance as branches.</p>
@@ -967,8 +981,8 @@ var qrcode = new QRCode("qr1", {"text":"https://ns-rse.github.io/topostats-tutor
 <h2>GitKraken Changing Branches</h2>
 <p>You can use GitKraken to switch branches use switch to <code>topostats-git</code>.</p>
 <p>Make sure you re-install TopoStats after switching branches (sometimes <code>pip install -e .</code> <em>doesn’t</em> pick up the changes Git makes).</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1"></a><span class="bu">cd</span> ~/tmp/TopoStats</span>
-<span id="cb8-2"><a href="#cb8-2"></a><span class="ex">pip</span> install <span class="at">-e</span> .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1"></a><span class="bu">cd</span> ~/tmp/TopoStats</span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="ex">pip</span> install <span class="at">-e</span> .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <aside class="notes">
 <p>Switch branches using Git Kraken. There are several ways of doing this but the easiest is to find the commit in the <code>Branch/Tag</code> column on the left, right-click on it and select “Checkout origin/<branch-name>” in this case <code>topostats-git</code>. This pulls down all changes from that branch and checks it out. You see that there is a laptop which indicates that your local computer has a copy of the branch at that particular commit and the tick indicates that you are checked out there. The other icon is the AFM-SPM GitHub organisation logo and indicates where that branch is on Git Hub.</branch-name></p>
@@ -990,12 +1004,12 @@ var qrcode = new QRCode("qr1", {"text":"https://ns-rse.github.io/topostats-tutor
 <h2>Re-run <code>run_topostats</code></h2>
 <p>Re-run <code>run_topostats</code></p>
 <div class="fragment">
-<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1"></a><span class="ex">Traceback</span> <span class="er">(</span><span class="ex">most</span> recent call last<span class="kw">)</span><span class="bu">:</span></span>
-<span id="cb9-2"><a href="#cb9-2"></a>  <span class="ex">File</span> <span class="st">"/home/neil/.virtualenvs/topostats/bin/run_topostats"</span>, line 8, in <span class="op">&lt;</span>module<span class="op">&gt;</span></span>
-<span id="cb9-3"><a href="#cb9-3"></a>    <span class="ex">sys.exit</span><span class="er">(</span><span class="fu">main()</span><span class="kw">)</span></span>
-<span id="cb9-4"><a href="#cb9-4"></a>  <span class="ex">File</span> <span class="st">"/home/neil/work/projects/topostats/TopoStats/topostats/run_topostats.py"</span>, line 213, in main</span>
-<span id="cb9-5"><a href="#cb9-5"></a>    <span class="ex">print</span><span class="er">(</span><span class="ex">f</span><span class="st">"Can we divide 2 by 0? {2/0}"</span><span class="kw">)</span></span>
-<span id="cb9-6"><a href="#cb9-6"></a><span class="ex">ZeroDivisionError:</span> division by zero</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1"></a><span class="ex">Traceback</span> <span class="er">(</span><span class="ex">most</span> recent call last<span class="kw">)</span><span class="bu">:</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a>  <span class="ex">File</span> <span class="st">"/home/neil/.virtualenvs/topostats/bin/run_topostats"</span>, line 8, in <span class="op">&lt;</span>module<span class="op">&gt;</span></span>
+<span id="cb8-3"><a href="#cb8-3"></a>    <span class="ex">sys.exit</span><span class="er">(</span><span class="fu">main()</span><span class="kw">)</span></span>
+<span id="cb8-4"><a href="#cb8-4"></a>  <span class="ex">File</span> <span class="st">"/home/neil/work/projects/topostats/TopoStats/topostats/run_topostats.py"</span>, line 213, in main</span>
+<span id="cb8-5"><a href="#cb8-5"></a>    <span class="ex">print</span><span class="er">(</span><span class="ex">f</span><span class="st">"Can we divide 2 by 0? {2/0}"</span><span class="kw">)</span></span>
+<span id="cb8-6"><a href="#cb8-6"></a><span class="ex">ZeroDivisionError:</span> division by zero</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <aside class="notes">
@@ -1128,11 +1142,31 @@ var qrcode = new QRCode("qr1", {"text":"https://ns-rse.github.io/topostats-tutor
 <section id="exercise-2---surprise" class="slide level2">
 <h2>Exercise 2 - Surprise</h2>
 <ol type="1">
-<li class="fragment">Create a new Conda environment called <code>surpriste</code>.</li>
-<li class="fragment">Checkout <code>topostats-surprirse</code> branch.</li>
+<li class="fragment">Create a new Conda environment called <code>surprise</code>.</li>
+<li class="fragment">Checkout <code>topostats-surprise</code> branch.</li>
 <li class="fragment">Install TopoStats.</li>
 <li class="fragment">Run TopoStats.</li>
 </ol>
+</section>
+<section id="exercise-3---test-development-notebook" class="slide level2">
+<h2>Exercise 3 - Test Development Notebook</h2>
+<ol type="1">
+<li class="fragment">Create a new Conda environment called <code>notebooks</code>.</li>
+<li class="fragment">Checkout <code>ns-rse/504-plotting-arrays</code> branch.</li>
+<li class="fragment">Install TopoStats with <code>notebooks</code> dependencies.</li>
+<li class="fragment">Run TopoStats.</li>
+<li class="fragment">Start a Notebook</li>
+</ol>
+</section>
+<section id="jupyter-notebooks" class="slide level2">
+<h2>Jupyter Notebooks</h2>
+<ul>
+<li class="fragment">Interactive execution of Python Code.</li>
+<li class="fragment">Early development.</li>
+<li class="fragment">Walk-through for running TopoStats (<code>00-Walthrough-minicircle.ipynb</code>)</li>
+<li class="fragment">Summary Statistics and Plotting (<code>02-Summary-statistics-and-plots.ipynb</code>)</li>
+<li class="fragment">Plotting Scans (<code>03-Plotting-scans.ipynb</code>)</li>
+</ul>
 </section>
 <section id="any-questions" class="slide level2">
 <h2>Any Questions?</h2>

@@ -60,7 +60,7 @@
     "href": "index.html#version-control-a-digression",
     "title": "TopoStats Tutorial : Virtual Environments & Git Branches",
     "section": "Version Control… a digression",
-    "text": "Version Control… a digression\nHopefully you have already…\n\nSetup GitHub account (https://github.com) using University email address.\nDownloaded and install GitKraken using GitHub account associated with University email address.\n\nComprehensive : Git, GitHub and GitKraken : From Zero to Hero.\n\nThe Research Software Engineering group run a comprehensive Git, GitHub and GitKraken course on a regular basis and I would highly recommend taking it (but then I would as I help run it!)\nIt is the sort of course I wish I had taken when I started out using Git as it covers the basics of version control and then moves onto collaborative work and how to use GitHub to report Issues and dealing with some of the problems that might arise when working on code collabotatively.\nSome of these aspects aren’t necessary for what we are covering today but I feel they are useful to be aware of so I’d encourage you to take the course.\nHopefully you have already setup a GitHub account and installed GitKarken.\nThat said we’re going to make a lightening digression into version control, what it is, why it matters to TopoStats development and how it impacts testing new features."
+    "text": "Version Control… a digression\nHopefully you have already…\n\nSetup GitHub account (https://github.com) using University email address.\nDownloaded and installed GitKraken using GitHub account associated with University email address.\n\nComprehensive : Git, GitHub and GitKraken : From Zero to Hero.\n\nThe Research Software Engineering group run a comprehensive Git, GitHub and GitKraken course on a regular basis and I would highly recommend taking it (but then I would as I help run it!)\nIt is the sort of course I wish I had taken when I started out using Git as it covers the basics of version control and then moves onto collaborative work and how to use GitHub to report Issues and dealing with some of the problems that might arise when working on code collaboratively.\nSome of these aspects aren’t necessary for what we are covering today but I feel they are useful to be aware of so I’d encourage you to take the course.\nHopefully you have already setup a GitHub account and installed GitKarken.\nThat said we’re going to make a lightening digression into version control, what it is, why it matters to TopoStats development and how it impacts testing new features."
   },
   {
     "objectID": "index.html#getting-started-with-git-github-and-gitkraken",
@@ -95,7 +95,7 @@
     "href": "index.html#installing-topostats-under-virtual-environments-1",
     "title": "TopoStats Tutorial : Virtual Environments & Git Branches",
     "section": "Installing TopoStats under Virtual Environments",
-    "text": "Installing TopoStats under Virtual Environments\ncd ~/tmp/topostats-tutorial/TopoStats\nwhich python\ncond activate topostats-git\ngit status\npip install -e .  # Install additional requirements e.g. .[tests]\nrun_topostats -h"
+    "text": "Installing TopoStats under Virtual Environments\ncd ~/tmp/topostats-tutorial/TopoStats\nwhich python\nconda activate topostats-git\ngit status\npip install -e .[notebooks]  # Install additional requirements e.g. .[tests]\nrun_topostats -h"
   },
   {
     "objectID": "index.html#run_topostats--h",
@@ -130,7 +130,7 @@
     "href": "index.html#testing-new-features---git-branches",
     "title": "TopoStats Tutorial : Virtual Environments & Git Branches",
     "section": "Testing New Features - Git Branches",
-    "text": "Testing New Features - Git Branches\n%%| fig-height: 2\n%%{init: { 'logLevel': 'debug', 'theme': 'base', 'gitGraph': {'showBranches': true,'showCommitLabel': true, 'rotateCommitLabel': true}} }%%\ngitGraph\n    commit\n    commit\n    branch bug1\n    checkout main\n    commit\n    checkout bug1\n    commit\n    commit\n    checkout main\n    branch feature1\n    checkout feature1\n    commit\n    commit\n    checkout bug1\n    commit\n    checkout main\n    merge bug1 tag: \"v0.1.1\"\n    checkout feature1\n    commit\n    commit\n    checkout main\n    merge feature1 tag: \"v0.1.2\"\n    commit"
+    "text": "Testing New Features - Git Branches\n\n\n\n\n%%{init: { 'logLevel': 'debug', 'theme': 'base', 'gitGraph': {'showBranches': true,'showCommitLabel': true, 'rotateCommitLabel': true}} }%%\ngitGraph\n    commit\n    commit\n    branch bug1\n    checkout main\n    commit\n    checkout bug1\n    commit\n    commit\n    checkout main\n    branch feature1\n    checkout feature1\n    commit\n    commit\n    checkout bug1\n    commit\n    checkout main\n    merge bug1 tag: \"v0.1.1\"\n    checkout feature1\n    commit\n    commit\n    checkout main\n    merge feature1 tag: \"v0.1.2\"\n    commit"
   },
   {
     "objectID": "index.html#gitkraken-changing-branches",
@@ -186,7 +186,21 @@
     "href": "index.html#exercise-2---surprise",
     "title": "TopoStats Tutorial : Virtual Environments & Git Branches",
     "section": "Exercise 2 - Surprise",
-    "text": "Exercise 2 - Surprise\n\nCreate a new Conda environment called surpriste.\nCheckout topostats-surprirse branch.\nInstall TopoStats.\nRun TopoStats."
+    "text": "Exercise 2 - Surprise\n\nCreate a new Conda environment called surprise.\nCheckout topostats-surprise branch.\nInstall TopoStats.\nRun TopoStats."
+  },
+  {
+    "objectID": "index.html#exercise-3---test-development-notebook",
+    "href": "index.html#exercise-3---test-development-notebook",
+    "title": "TopoStats Tutorial : Virtual Environments & Git Branches",
+    "section": "Exercise 3 - Test Development Notebook",
+    "text": "Exercise 3 - Test Development Notebook\n\nCreate a new Conda environment called notebooks.\nCheckout ns-rse/504-plotting-arrays branch.\nInstall TopoStats with notebooks dependencies.\nRun TopoStats.\nStart a Notebook"
+  },
+  {
+    "objectID": "index.html#jupyter-notebooks",
+    "href": "index.html#jupyter-notebooks",
+    "title": "TopoStats Tutorial : Virtual Environments & Git Branches",
+    "section": "Jupyter Notebooks",
+    "text": "Jupyter Notebooks\n\nInteractive execution of Python Code.\nEarly development.\nWalk-through for running TopoStats (00-Walthrough-minicircle.ipynb)\nSummary Statistics and Plotting (02-Summary-statistics-and-plots.ipynb)\nPlotting Scans (03-Plotting-scans.ipynb)"
   },
   {
     "objectID": "index.html#any-questions",
