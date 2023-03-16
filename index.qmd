@@ -707,10 +707,27 @@ with all package versions included.
 
 ## Exercise 2 - Surprise
 
-1. Create a new Conda environment called `surpriste`.
-2. Checkout `topostats-surprirse` branch.
+1. Create a new Conda environment called `surprise`.
+2. Checkout `topostats-surprise` branch.
 3. Install TopoStats.
 4. Run TopoStats.
+
+
+## Exercise 3 - Test Development Notebook
+
+1. Create a new Conda environment called `notebooks`.
+2. Checkout `ns-rse/504-plotting-arrays` branch.
+3. Install TopoStats with `notebooks` dependencies.
+4. Run TopoStats.
+5. Start a Notebook
+
+## Jupyter Notebooks
+
++ Interactive execution of Python Code.
++ Early development.
++ Walk-through for running TopoStats (`00-Walthrough-minicircle.ipynb`)
++ Summary Statistics and Plotting (`02-Summary-statistics-and-plots.ipynb`)
++ Plotting Scans (`03-Plotting-scans.ipynb`)
 
 ## Any Questions?
 
