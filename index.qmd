@@ -154,7 +154,7 @@ These all work in isolation, it just depedns which one has been activated.
 Hopefully you have already...
 
 + Setup GitHub account ([https://github.com](https://github.com)) using University email address.
-+ Downloaded and install  [GitKraken](https://www.gitkraken.com/) using GitHub account associated with University email
++ Downloaded and installed [GitKraken](https://www.gitkraken.com/) using GitHub account associated with University email
   address.
 
 Comprehensive : [Git, GitHub and GitKraken : From Zero to Hero](https://srse-git-github-zero2hero.netlify.app/).
@@ -165,7 +165,7 @@ would highly recommend taking it (but then I would as I help run it!)
 
 It is the sort of course I wish I had taken when I started out using Git as it covers the basics of version control and
 then moves onto collaborative work and how to use GitHub to report Issues and dealing with some of the problems that
-might arise when working on code collabotatively.
+might arise when working on code collaboratively.
 
 Some of these aspects aren't necessary for what we are covering today but I feel they are useful to be aware of so I'd
 encourage you to take the course.
@@ -259,9 +259,9 @@ Now we're going to install TopoStats that we have cloned from Git into this envi
 ```{.bash code-line-numbers="|1|2|3|4|5|6"}
 cd ~/tmp/topostats-tutorial/TopoStats
 which python
-cond activate topostats-git
+conda activate topostats-git
 git status
-pip install -e .  # Install additional requirements e.g. .[tests]
+pip install -e .[notebooks]  # Install additional requirements e.g. .[tests]
 run_topostats -h
 ```
 :::
@@ -271,8 +271,9 @@ Check you have activated your Conda environment if not activate it.
 
 Use `git status` and check that you are on the `main` branch its shown on the first line of output.
 
-Now install TopoStats with the command `pip install -e .` and it should start downloading a bunch of packages that
-TopoStats depends on then install all of them. The `.` means to install from the current directory whilst the `-e` flag
+Now install TopoStats with the command `pip install -e .[notebooks]` and it should start downloading a bunch of packages that
+TopoStats depends on then install all of them. The `[notebooks]` tells `pip` to also install some extra packages we've
+defined that are useful for running sample Notebook. The `.` means to install from the current directory whilst the `-e` flag
 tells Pip to install the package in what is known as "editable" format, and so rather than copying the files to a
 location under your virtual environment they are referenced from the current location.
 
@@ -473,7 +474,7 @@ parameters, save and then use it.
 
 ``` {.bash}
 run_topostats --config_file dummy_config.yaml
-````
+```
 :::
 
 
@@ -706,10 +707,27 @@ with all package versions included.
 
 ## Exercise 2 - Surprise
 
-1. Create a new Conda environment called `surpriste`.
-2. Checkout `topostats-surprirse` branch.
+1. Create a new Conda environment called `surprise`.
+2. Checkout `topostats-surprise` branch.
 3. Install TopoStats.
 4. Run TopoStats.
+
+
+## Exercise 3 - Test Development Notebook
+
+1. Create a new Conda environment called `notebooks`.
+2. Checkout `ns-rse/504-plotting-arrays` branch.
+3. Install TopoStats with `notebooks` dependencies.
+4. Run TopoStats.
+5. Start a Notebook
+
+## Jupyter Notebooks
+
++ Interactive execution of Python Code.
++ Early development.
++ Walk-through for running TopoStats (`00-Walthrough-minicircle.ipynb`)
++ Summary Statistics and Plotting (`02-Summary-statistics-and-plots.ipynb`)
++ Plotting Scans (`03-Plotting-scans.ipynb`)
 
 ## Any Questions?
 
