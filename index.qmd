@@ -261,7 +261,7 @@ cd ~/tmp/topostats-tutorial/TopoStats
 which python
 conda activate topostats-git
 git status
-pip install -e .  # Install additional requirements e.g. .[tests]
+pip install -e .[notebooks]  # Install additional requirements e.g. .[tests]
 run_topostats -h
 ```
 :::
@@ -271,8 +271,9 @@ Check you have activated your Conda environment if not activate it.
 
 Use `git status` and check that you are on the `main` branch its shown on the first line of output.
 
-Now install TopoStats with the command `pip install -e .` and it should start downloading a bunch of packages that
-TopoStats depends on then install all of them. The `.` means to install from the current directory whilst the `-e` flag
+Now install TopoStats with the command `pip install -e .[notebooks]` and it should start downloading a bunch of packages that
+TopoStats depends on then install all of them. The `[notebooks]` tells `pip` to also install some extra packages we've
+defined that are useful for running sample Notebook. The `.` means to install from the current directory whilst the `-e` flag
 tells Pip to install the package in what is known as "editable" format, and so rather than copying the files to a
 location under your virtual environment they are referenced from the current location.
 
