@@ -407,7 +407,7 @@ Neil Shephard
 <h2>View these slides…</h2>
 <div id="qr1" class="qrcode"></div>
 <script type="text/javascript">
-var qrcode = new QRCode("qr1", {"colorDark":"#000000","height":"400","text":"https://ns-rse.github.io/topostats-tutorial","colorLight":"#ffffff","width":"400"});
+var qrcode = new QRCode("qr1", {"colorDark":"#000000","text":"https://ns-rse.github.io/topostats-tutorial","colorLight":"#ffffff","width":"400","height":"400"});
 </script>
     
 <p><a href="https://ns-rse.github.io/topostats-tutorial"><strong>https://ns-rse.github.io/topostats-tutorial</strong></a></p>
@@ -1008,7 +1008,7 @@ gitGraph
 <span id="cb8-2"><a href="#cb8-2"></a>  <span class="ex">File</span> <span class="st">"/home/neil/.virtualenvs/topostats/bin/run_topostats"</span>, line 8, in <span class="op">&lt;</span>module<span class="op">&gt;</span></span>
 <span id="cb8-3"><a href="#cb8-3"></a>    <span class="ex">sys.exit</span><span class="er">(</span><span class="fu">main()</span><span class="kw">)</span></span>
 <span id="cb8-4"><a href="#cb8-4"></a>  <span class="ex">File</span> <span class="st">"/home/neil/work/projects/topostats/TopoStats/topostats/run_topostats.py"</span>, line 213, in main</span>
-<span id="cb8-5"><a href="#cb8-5"></a>    <span class="ex">print</span><span class="er">(</span><span class="ex">f</span><span class="st">"Can we divide 2 by 0? {2/0}"</span><span class="kw">)</span></span>
+<span id="cb8-5"><a href="#cb8-5"></a>    <span class="ex">print</span><span class="er">(</span><span class="ex">f</span><span class="st">"Can we divide 5 by 0? {5/0}"</span><span class="kw">)</span></span>
 <span id="cb8-6"><a href="#cb8-6"></a><span class="ex">ZeroDivisionError:</span> division by zero</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
@@ -1139,17 +1139,149 @@ gitGraph
 <li class="fragment">Run the test suite with <code>pytest</code></li>
 </ol>
 </section>
+<section id="exercise-1---tests-solution" class="slide level2">
+<h2>Exercise 1 - Tests (Solution)</h2>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1"></a><span class="ex">conda</span> create <span class="at">--name</span> test python=3.10</span>
+<span id="cb9-2"><a href="#cb9-2"></a><span class="fu">git</span> checkout topostats-test <span class="co"># This is the commandline version, use GitKraken to switch</span></span>
+<span id="cb9-3"><a href="#cb9-3"></a><span class="ex">pip</span> install <span class="at">-e</span> .[tests]  <span class="co"># Install the test dependencies as well</span></span>
+<span id="cb9-4"><a href="#cb9-4"></a><span class="ex">pytest</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<aside class="notes">
+<p>You create the <code>test</code> environment, making sure to include Python 3.10 in the installation. I’ve shown the command line version to switch branches using Git but you can use GitKraken to do this if you don’t have Git installed at the command line.</p>
+<p>Next you make sure TopoStats is installed along with the test dependencies.</p>
+<p>Finally you run the test suite which checks most of the code is running correctly. This can take a while so cancel with <code>Ctrl+C</code> to break out of the tests if you want.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
 <section id="exercise-2---surprise" class="slide level2">
 <h2>Exercise 2 - Surprise</h2>
 <ol type="1">
 <li class="fragment">Create a new Conda environment called <code>surprise</code>.</li>
 <li class="fragment">Checkout <code>topostats-surprise</code> branch.</li>
 <li class="fragment">Install TopoStats.</li>
+<li class="fragment">Try running <code>pytest</code>.</li>
 <li class="fragment">Run TopoStats.</li>
 </ol>
 </section>
-<section id="exercise-3---test-development-notebook" class="slide level2">
-<h2>Exercise 3 - Test Development Notebook</h2>
+<section id="exercise---2-surprise-solution" class="slide level2 scrollable">
+<h2>Exercise - 2 Surprise (Solution)</h2>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1"></a><span class="ex">conda</span> create <span class="at">--name</span> surprise python=3.10</span>
+<span id="cb10-2"><a href="#cb10-2"></a><span class="fu">git</span> checkout topostats-surprise <span class="co"># This is the commandline version, use GitKraken to switch</span></span>
+<span id="cb10-3"><a href="#cb10-3"></a><span class="ex">pip</span> install <span class="at">-e</span> .  <span class="co"># Install the test dependencies as well</span></span>
+<span id="cb10-4"><a href="#cb10-4"></a><span class="ex">pytest</span></span>
+<span id="cb10-5"><a href="#cb10-5"></a><span class="ex">run_topostats</span></span>
+<span id="cb10-6"><a href="#cb10-6"></a>      <span class="ex">___</span>           ___           ___           ___</span>
+<span id="cb10-7"><a href="#cb10-7"></a>     <span class="ex">/\ </span> <span class="dt">\ </span>        /\  <span class="dt">\ </span>        /\  <span class="dt">\ </span>        /\  <span class="dt">\</span></span>
+<span id="cb10-8"><a href="#cb10-8"></a>     <span class="dt">\:\ </span> <span class="dt">\ </span>      /::\  <span class="dt">\ </span>      /::\  <span class="dt">\ </span>      /::\  <span class="dt">\</span></span>
+<span id="cb10-9"><a href="#cb10-9"></a>      <span class="dt">\:\ </span> <span class="dt">\ </span>    /:/\:\  <span class="dt">\ </span>    /:/\:\  <span class="dt">\ </span>    /:/\:\  <span class="dt">\</span></span>
+<span id="cb10-10"><a href="#cb10-10"></a>      /::\  <span class="dt">\ </span>  /:/  <span class="dt">\:\ </span> <span class="dt">\ </span>  /::\~\:\  <span class="dt">\ </span>  /:/  <span class="dt">\:\ </span> <span class="dt">\</span></span>
+<span id="cb10-11"><a href="#cb10-11"></a>     /:/\:\__\ /:/__/ <span class="dt">\:\_</span>_\ /:/\:\ \:\__\ /:/__/ <span class="dt">\:\_</span>_<span class="dt">\</span></span>
+<span id="cb10-12"><a href="#cb10-12"></a>    /:/  <span class="dt">\/</span>__/ <span class="dt">\:\ </span> <span class="dt">\ </span>/:/  / <span class="dt">\/</span>__\:\/:/  / <span class="dt">\:\ </span> <span class="dt">\ </span>/:/  /</span>
+<span id="cb10-13"><a href="#cb10-13"></a>   <span class="ex">/:/</span>  /       <span class="dt">\:\ </span> /:/  /       <span class="dt">\:</span>:/  /   <span class="dt">\:\ </span> /:/  /</span>
+<span id="cb10-14"><a href="#cb10-14"></a>   <span class="ex">\/__/</span>         <span class="dt">\:\/</span>:/  /         <span class="dt">\/</span>__/     <span class="dt">\:\/</span>:/  /</span>
+<span id="cb10-15"><a href="#cb10-15"></a>                  <span class="ex">\::/</span>  /                     <span class="dt">\:</span>:/  /</span>
+<span id="cb10-16"><a href="#cb10-16"></a>                   <span class="ex">\/__/</span>                       <span class="dt">\/</span>__/</span>
+<span id="cb10-17"><a href="#cb10-17"></a>      <span class="ex">___</span>           ___           ___           ___           ___</span>
+<span id="cb10-18"><a href="#cb10-18"></a>     <span class="ex">/\ </span> <span class="dt">\ </span>        /\  <span class="dt">\ </span>        /\  <span class="dt">\ </span>        /\  <span class="dt">\ </span>        /\  <span class="dt">\</span></span>
+<span id="cb10-19"><a href="#cb10-19"></a>    /::\  <span class="dt">\ </span>       <span class="dt">\:\ </span> <span class="dt">\ </span>      /::\  <span class="dt">\ </span>       <span class="dt">\:\ </span> <span class="dt">\ </span>      /::\  <span class="dt">\</span></span>
+<span id="cb10-20"><a href="#cb10-20"></a>   /:/\ \  <span class="dt">\ </span>       <span class="dt">\:\ </span> <span class="dt">\ </span>    /:/\:\  <span class="dt">\ </span>       <span class="dt">\:\ </span> <span class="dt">\ </span>    /:/\ \  <span class="dt">\</span></span>
+<span id="cb10-21"><a href="#cb10-21"></a>  _<span class="dt">\:\~\ \ </span> <span class="dt">\ </span>      /::\  <span class="dt">\ </span>  /::\~\:\  <span class="dt">\ </span>      /::\  <span class="dt">\ </span>  _<span class="dt">\:\~\ \ </span> <span class="dt">\</span></span>
+<span id="cb10-22"><a href="#cb10-22"></a> /\ \:\ \ \__\     /:/\:\__\ /:/\:\ \:\__\     /:/\:\__\ /\ \:\ \ \__<span class="dt">\</span></span>
+<span id="cb10-23"><a href="#cb10-23"></a> <span class="dt">\:\ \:\ \/</span>__/    /:/  <span class="dt">\/</span>__/ <span class="dt">\/</span>__\:\/:/  /    /:/  <span class="dt">\/</span>__/ <span class="dt">\:\ \:\ \/</span>__/</span>
+<span id="cb10-24"><a href="#cb10-24"></a>  <span class="ex">\:\ \:\__\ </span>    /:/  /           <span class="dt">\:</span>:/  /    /:/  /       <span class="dt">\:\ \:\_</span>_<span class="dt">\</span></span>
+<span id="cb10-25"><a href="#cb10-25"></a>   <span class="dt">\:\/</span>:/  /     <span class="dt">\/</span>__/            /:/  /     <span class="dt">\/</span>__/         <span class="dt">\:\/</span>:/  /</span>
+<span id="cb10-26"><a href="#cb10-26"></a>    <span class="ex">\::/</span>  /                      /:/  /                     <span class="dt">\:</span>:/  /</span>
+<span id="cb10-27"><a href="#cb10-27"></a>     <span class="ex">\/__/</span>                       <span class="dt">\/</span>__/                       <span class="dt">\/</span>__/</span>
+<span id="cb10-28"><a href="#cb10-28"></a></span>
+<span id="cb10-29"><a href="#cb10-29"></a><span class="ex">....................................................................................................</span></span>
+<span id="cb10-30"><a href="#cb10-30"></a><span class="ex">....................................................................................................</span></span>
+<span id="cb10-31"><a href="#cb10-31"></a><span class="ex">....................................................................................................</span></span>
+<span id="cb10-32"><a href="#cb10-32"></a><span class="ex">....................................................................................................</span></span>
+<span id="cb10-33"><a href="#cb10-33"></a><span class="ex">....................................,,,,,,,,,,,,,,,,,.,,,,,,,,,,,,..................................</span></span>
+<span id="cb10-34"><a href="#cb10-34"></a><span class="ex">....................................,Y</span><span class="va">$$$Y</span><span class="ex">$,</span><span class="va">$$</span><span class="ex">YYYY</span><span class="va">$$</span><span class="ex">$,</span><span class="va">$YY$$$$$$</span><span class="ex">Y</span><span class="va">$Y</span><span class="ex">,.................................</span></span>
+<span id="cb10-35"><a href="#cb10-35"></a><span class="ex">.......,YYY$+DDDDDDDJJDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD$.........</span></span>
+<span id="cb10-36"><a href="#cb10-36"></a><span class="ex">........,,,.*@@@@@@@J%%*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@$.........</span></span>
+<span id="cb10-37"><a href="#cb10-37"></a><span class="ex">............P@@@@@JDD@@*D@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@$.........</span></span>
+<span id="cb10-38"><a href="#cb10-38"></a><span class="ex">............P@@@@JPJ@JD%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@$.........</span></span>
+<span id="cb10-39"><a href="#cb10-39"></a><span class="ex">............P@@@DD%*PPD@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@$.........</span></span>
+<span id="cb10-40"><a href="#cb10-40"></a><span class="ex">............P@@P%%DDD@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@$.........</span></span>
+<span id="cb10-41"><a href="#cb10-41"></a><span class="ex">............P@@%DD@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@J@@@@@@@@@@@@@@@@$.........</span></span>
+<span id="cb10-42"><a href="#cb10-42"></a><span class="ex">............*J%PY%+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@PYD@@@@@@@@@@@@@@@$.........</span></span>
+<span id="cb10-43"><a href="#cb10-43"></a><span class="ex">........</span><span class="va">$$</span><span class="ex">$,***PDDD@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@YYD@@@@@@@@@@@@@@@@$.........</span></span>
+<span id="cb10-44"><a href="#cb10-44"></a><span class="ex">........</span><span class="va">$$</span><span class="ex">$,P@J@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%P*P@@@@@@@@@@@@@@@$.........</span></span>
+<span id="cb10-45"><a href="#cb10-45"></a><span class="ex">............P@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@$.........</span></span>
+<span id="cb10-46"><a href="#cb10-46"></a><span class="ex">............P@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@$.........</span></span>
+<span id="cb10-47"><a href="#cb10-47"></a><span class="ex">............P@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@JD*J@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@$.........</span></span>
+<span id="cb10-48"><a href="#cb10-48"></a><span class="ex">............P@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%**DD*P@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@$.........</span></span>
+<span id="cb10-49"><a href="#cb10-49"></a><span class="ex">............P@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%%DJD%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@$.........</span></span>
+<span id="cb10-50"><a href="#cb10-50"></a><span class="ex">............P@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@$.........</span></span>
+<span id="cb10-51"><a href="#cb10-51"></a><span class="ex">........,,,,P@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@D%@@@@J+%@@@@@@@@@@@@@@@@@@@@@@@@$.........</span></span>
+<span id="cb10-52"><a href="#cb10-52"></a><span class="ex">........</span><span class="va">$YY$P</span><span class="ex">@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@JYD*D@@J+</span><span class="va">$J</span><span class="ex">@@@@@@@@@P+PJ@@@@@@@@@@$.........</span></span>
+<span id="cb10-53"><a href="#cb10-53"></a><span class="ex">.....</span><span class="va">$$</span><span class="ex">.....P@@@@@@@@@@@@@@@@@@@@@@@@@@@@+PJ@@@@@@@@@@@J*D@JP@@@@D</span><span class="va">$*</span><span class="ex">D@@@@@@@@D,%@@@@@@@@@@$.........</span></span>
+<span id="cb10-54"><a href="#cb10-54"></a><span class="ex">.....Y$.....P@@@@@@@@@@@@@@@@@@@@@@@@@@J%*JP@@@@@@@@@@@**DJJ@@@@@@D**@@@@@@@@J+P@@@@@@@@@@$.........</span></span>
+<span id="cb10-55"><a href="#cb10-55"></a><span class="ex">.....Y$.....P@@@@@@@@@@@@@@@@@@@@@@@@@JPJ@%*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%%@@@@@@@@@@$.........</span></span>
+<span id="cb10-56"><a href="#cb10-56"></a><span class="ex">.....Y$.....P@@@@@@@@@@@@@@@@@@@@@@@@@@*%P%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@D*J@@@@@@@@@@@@@@$.........</span></span>
+<span id="cb10-57"><a href="#cb10-57"></a><span class="ex">.....Y$.....P@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@J@JYPP@@@@@@@@@@@@@@$.........</span></span>
+<span id="cb10-58"><a href="#cb10-58"></a><span class="ex">.....Y$.....P@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@P*+Y*D@@@D%D@@@@@@@@@$.........</span></span>
+<span id="cb10-59"><a href="#cb10-59"></a><span class="ex">.....YY.....P@@@@@@@@@@@@@@@@@@@J@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@J%%@@@@J*$%%P@@@@@@@@$.........</span></span>
+<span id="cb10-60"><a href="#cb10-60"></a><span class="ex">.....,,.</span><span class="va">$$</span><span class="ex">$,P@@@@@@@@@@@@@@@@DD*,D@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@+P*D%J@@@@@@@@$.........</span></span>
+<span id="cb10-61"><a href="#cb10-61"></a><span class="ex">........,,,,P@@@@@@@@@@@@@@@P%%YD@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@JD@@@@@@@@@@@@$.........</span></span>
+<span id="cb10-62"><a href="#cb10-62"></a><span class="ex">............P@@@@@@@@@@@@@@@+JPJ@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@$.........</span></span>
+<span id="cb10-63"><a href="#cb10-63"></a><span class="ex">............P@@@@@@@@@@@@@@@%*J@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@$.........</span></span>
+<span id="cb10-64"><a href="#cb10-64"></a><span class="ex">............P@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@$.........</span></span>
+<span id="cb10-65"><a href="#cb10-65"></a><span class="ex">............P@@@@%J@@D*+%@@@@@@@@@@@@@@@@@@@@@@@@%%%J@@@@@@@@@@@@@@@@@@%**%@@@@@@@@@@@@@@@$.........</span></span>
+<span id="cb10-66"><a href="#cb10-66"></a><span class="ex">............P@@@@P+Y+P%*J@@@@@@@@@@@@@@@@@@@@@@@@%PDPJ@@D@@@@@@@@@@@@@+%JDP+%@@@@@@@@@@@@@$.........</span></span>
+<span id="cb10-67"><a href="#cb10-67"></a><span class="ex">............P@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%%*J@@+%%DJ@@@@@@@@@%D%DJDD@@@@@@@@@@@@@$.........</span></span>
+<span id="cb10-68"><a href="#cb10-68"></a><span class="ex">........,,,,P@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@***%@@%D@J+J@@@@@@@@@@@@@@@@@@@@@@@@@@@@$.........</span></span>
+<span id="cb10-69"><a href="#cb10-69"></a><span class="ex">........</span><span class="va">$$$$</span><span class="ex">P@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@D%%*@@@DD@@@D*J**@@@@@@@D%DJJ*%@@@@@@@@****%@@$.........</span></span>
+<span id="cb10-70"><a href="#cb10-70"></a><span class="ex">............P@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%PPP%@@@@@@@@@JDD@@@@@@@J+@JD%P*@@@@@%+PP%%%*@@$.........</span></span>
+<span id="cb10-71"><a href="#cb10-71"></a><span class="ex">............P@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@DP*@@@@@@@@@@@@@@@@@@@@@@%*DD%%@@@@@@@DD@@@@@@@$.........</span></span>
+<span id="cb10-72"><a href="#cb10-72"></a><span class="ex">............P@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@D</span><span class="va">$J</span><span class="ex">@@@@@@@@@@@@@@@@@@@@@@@@@@@@D*%%PJJ+%%*@@@@@$.........</span></span>
+<span id="cb10-73"><a href="#cb10-73"></a><span class="ex">............P@@@@@@@@@@%PD@@@@@@@@@@@@@@@@@@J@@@@@@@@@@@@@@@@@@@@@@@@@@@@@+D@DPJ@D%D*Y%@@@$.........</span></span>
+<span id="cb10-74"><a href="#cb10-74"></a><span class="ex">............P@@@@@@@@@@D+</span><span class="va">$D</span><span class="ex">@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@J+J+@@@@@@@%+D@@$.........</span></span>
+<span id="cb10-75"><a href="#cb10-75"></a><span class="ex">............*J*D@@@@@@@@@P**P@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@D+D@@@@@@@@@@@@$.........</span></span>
+<span id="cb10-76"><a href="#cb10-76"></a><span class="ex">............*J*YPP%**@@@@@D%D@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@$.........</span></span>
+<span id="cb10-77"><a href="#cb10-77"></a><span class="ex">..........,</span><span class="va">$PJJJ</span><span class="ex">%P*P%JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ$.........</span></span>
+<span id="cb10-78"><a href="#cb10-78"></a><span class="ex">..........,,Y,,,,,,,,,,,,,</span><span class="va">$$</span><span class="ex">Y$,,,,,,,,,,,</span><span class="va">$YYY</span><span class="ex">,,,,,,,,,,,,YYY,,,,,,,,,,,,YYY$,,,,,,,,,,,</span><span class="va">$YY</span><span class="ex">$.........</span></span>
+<span id="cb10-79"><a href="#cb10-79"></a><span class="ex">............,.............,,,,...........,,,,,.......,..,,,,............,,,,...........,,,,.........</span></span>
+<span id="cb10-80"><a href="#cb10-80"></a><span class="ex">.............................................YYY</span><span class="va">$$$$</span><span class="ex">YY</span><span class="va">$$</span><span class="ex">$,..........................................</span></span>
+<span id="cb10-81"><a href="#cb10-81"></a><span class="ex">....................................................................................................</span></span>
+<span id="cb10-82"><a href="#cb10-82"></a><span class="ex">....................................................................................................</span></span>
+<span id="cb10-83"><a href="#cb10-83"></a><span class="ex">....................................................................................................</span></span>
+<span id="cb10-84"><a href="#cb10-84"></a>  <span class="ex">____</span>                            _         _       _   _                 _ _</span>
+<span id="cb10-85"><a href="#cb10-85"></a> <span class="ex">/</span> ___<span class="kw">|</span><span class="ex">___</span>  _ __   __ _ _ __ __ _<span class="kw">|</span> <span class="kw">|</span><span class="ex">_</span> _   _<span class="kw">|</span> <span class="kw">|</span> <span class="ex">__</span> _<span class="kw">|</span> <span class="kw">|</span><span class="ex">_</span><span class="er">(</span><span class="ex">_</span><span class="kw">)</span> <span class="ex">___</span>  _ __  ___<span class="kw">|</span> <span class="kw">|</span> <span class="kw">|</span></span>
+<span id="cb10-86"><a href="#cb10-86"></a><span class="kw">|</span> <span class="kw">|</span>   <span class="ex">/</span> _ <span class="dt">\|</span> <span class="st">'_ \ / _` | '</span>__/ _<span class="kw">`</span> <span class="kw">|</span> <span class="ex">__</span><span class="kw">|</span> <span class="kw">|</span> <span class="kw">|</span> <span class="kw">|</span> <span class="kw">|</span><span class="ex">/</span> _<span class="kw">`</span> <span class="kw">|</span> <span class="ex">__</span><span class="kw">|</span> <span class="kw">|</span><span class="ex">/</span> _ <span class="dt">\|</span> <span class="st">'_ \/ __| | |</span></span>
+<span id="cb10-87"><a href="#cb10-87"></a><span class="st">| |__| (_) | | | | (_| | | | (_| | |_| |_| | | (_| | |_| | (_) | | | \__ \_|_|</span></span>
+<span id="cb10-88"><a href="#cb10-88"></a><span class="st"> \____\___/|_| |_|\__, |_|  \__,_|\__|\__,_|_|\__,_|\__|_|\___/|_| |_|___(_|_)</span></span>
+<span id="cb10-89"><a href="#cb10-89"></a><span class="st">                  |___/</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<aside class="notes">
+<p>You create the <code>surprise</code> environment, making sure to include Python 3.10 in the installation. Again I’ve shown the command line version to switch branches using Git but you can use GitKraken to do this if you don’t have Git installed at the command line.</p>
+<p>Next you make sure TopoStats is installed but no additional dependencies are required here.</p>
+<p>You should find if you try running the test suite that it fails saying <code>pytest</code> is not found. This is because you <em>didn’t</em> install the test dependencies that are required to run the test suite.</p>
+<p>Finally you <code>run_topostats</code> and on this branch I have changed the code so that instead of running properly it prints out this message which is some fancy ASCII-art for TopoStats, the test-image called <code>minicircle.spm</code> that we use in development and a <code>congratulations!!</code> message.</p>
+<p>This is another non-sensical example but hopefully demonstrates how Git branches can be used to change the code base without affecting the <code>main</code>/<code>master</code> branch.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<section id="exercise-3---notebooks" class="slide level2">
+<h2>Exercise 3 - Notebooks</h2>
 <ol type="1">
 <li class="fragment">Create a new Conda environment called <code>notebooks</code>.</li>
 <li class="fragment">Checkout <code>ns-rse/504-plotting-arrays</code> branch.</li>
@@ -1157,6 +1289,13 @@ gitGraph
 <li class="fragment">Run TopoStats.</li>
 <li class="fragment">Start a Notebook</li>
 </ol>
+</section>
+<section id="exercise-3---notebooks-solution" class="slide level2">
+<h2>Exercise 3 - Notebooks (Solution)</h2>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1"></a><span class="ex">conda</span> create <span class="at">--name</span> test python=3.10</span>
+<span id="cb11-2"><a href="#cb11-2"></a><span class="fu">git</span> checkout topostats-test <span class="co"># This is the commandline version, use GitKraken to switch</span></span>
+<span id="cb11-3"><a href="#cb11-3"></a><span class="ex">pip</span> install <span class="at">-e</span> .[tests]  <span class="co"># Install the test dependencies as well</span></span>
+<span id="cb11-4"><a href="#cb11-4"></a><span class="ex">jupyter</span> notebook</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="jupyter-notebooks" class="slide level2">
 <h2>Jupyter Notebooks</h2>
@@ -1166,6 +1305,7 @@ gitGraph
 <li class="fragment">Walk-through for running TopoStats (<code>00-Walthrough-minicircle.ipynb</code>)</li>
 <li class="fragment">Summary Statistics and Plotting (<code>02-Summary-statistics-and-plots.ipynb</code>)</li>
 <li class="fragment">Plotting Scans (<code>03-Plotting-scans.ipynb</code>)</li>
+<li class="fragment">Try going through them to process images (some require <code>run_topostats</code>) to have been run.</li>
 </ul>
 </section>
 <section id="any-questions" class="slide level2">
