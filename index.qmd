@@ -581,7 +581,7 @@ Traceback (most recent call last):
   File "/home/neil/.virtualenvs/topostats/bin/run_topostats", line 8, in <module>
     sys.exit(main())
   File "/home/neil/work/projects/topostats/TopoStats/topostats/run_topostats.py", line 213, in main
-    print(f"Can we divide 2 by 0? {2/0}")
+    print(f"Can we divide 5 by 0? {5/0}")
 ZeroDivisionError: division by zero
 ```
 
@@ -704,22 +704,167 @@ with all package versions included.
 3. Install TopoStats and include the test dependencies.
 4. Run the test suite with `pytest`
 
+## Exercise 1 - Tests (Solution)
+
+```{.bash}
+conda create --name test python=3.10
+git checkout topostats-test # This is the commandline version, use GitKraken to switch
+pip install -e .[tests]  # Install the test dependencies as well
+pytest
+```
+
+::: {.notes}
+You create the `test` environment, making sure to include Python 3.10 in the installation. I've shown the command line
+version to switch branches using Git but you can use GitKraken to do this if you don't have Git installed at the command
+line.
+
+Next you make sure TopoStats is installed along with the test dependencies.
+
+Finally you run the test suite which checks most of the code is running correctly. This can take a while so cancel with
+`Ctrl+C` to break out of the tests if you want.
+
+:::
 
 ## Exercise 2 - Surprise
 
 1. Create a new Conda environment called `surprise`.
 2. Checkout `topostats-surprise` branch.
 3. Install TopoStats.
+4. Try running `pytest`.
 4. Run TopoStats.
 
+::: {.scrollable}
+## Exercise - 2 Surprise (Solution)
 
-## Exercise 3 - Test Development Notebook
+```{.bash}
+conda create --name surprise python=3.10
+git checkout topostats-surprise # This is the commandline version, use GitKraken to switch
+pip install -e .  # Install the test dependencies as well
+pytest
+run_topostats
+      ___           ___           ___           ___
+     /\  \         /\  \         /\  \         /\  \
+     \:\  \       /::\  \       /::\  \       /::\  \
+      \:\  \     /:/\:\  \     /:/\:\  \     /:/\:\  \
+      /::\  \   /:/  \:\  \   /::\~\:\  \   /:/  \:\  \
+     /:/\:\__\ /:/__/ \:\__\ /:/\:\ \:\__\ /:/__/ \:\__\
+    /:/  \/__/ \:\  \ /:/  / \/__\:\/:/  / \:\  \ /:/  /
+   /:/  /       \:\  /:/  /       \::/  /   \:\  /:/  /
+   \/__/         \:\/:/  /         \/__/     \:\/:/  /
+                  \::/  /                     \::/  /
+                   \/__/                       \/__/
+      ___           ___           ___           ___           ___
+     /\  \         /\  \         /\  \         /\  \         /\  \
+    /::\  \        \:\  \       /::\  \        \:\  \       /::\  \
+   /:/\ \  \        \:\  \     /:/\:\  \        \:\  \     /:/\ \  \
+  _\:\~\ \  \       /::\  \   /::\~\:\  \       /::\  \   _\:\~\ \  \
+ /\ \:\ \ \__\     /:/\:\__\ /:/\:\ \:\__\     /:/\:\__\ /\ \:\ \ \__\
+ \:\ \:\ \/__/    /:/  \/__/ \/__\:\/:/  /    /:/  \/__/ \:\ \:\ \/__/
+  \:\ \:\__\     /:/  /           \::/  /    /:/  /       \:\ \:\__\
+   \:\/:/  /     \/__/            /:/  /     \/__/         \:\/:/  /
+    \::/  /                      /:/  /                     \::/  /
+     \/__/                       \/__/                       \/__/
+
+....................................................................................................
+....................................................................................................
+....................................................................................................
+....................................................................................................
+....................................,,,,,,,,,,,,,,,,,.,,,,,,,,,,,,..................................
+....................................,Y$$$Y$,$$YYYY$$$,$YY$$$$$$Y$Y,.................................
+.......,YYY$+DDDDDDDJJDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD$.........
+........,,,.*@@@@@@@J%%*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@$.........
+............P@@@@@JDD@@*D@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@$.........
+............P@@@@JPJ@JD%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@$.........
+............P@@@DD%*PPD@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@$.........
+............P@@P%%DDD@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@$.........
+............P@@%DD@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@J@@@@@@@@@@@@@@@@$.........
+............*J%PY%+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@PYD@@@@@@@@@@@@@@@$.........
+........$$$,***PDDD@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@YYD@@@@@@@@@@@@@@@@$.........
+........$$$,P@J@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%P*P@@@@@@@@@@@@@@@$.........
+............P@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@$.........
+............P@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@$.........
+............P@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@JD*J@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@$.........
+............P@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%**DD*P@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@$.........
+............P@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%%DJD%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@$.........
+............P@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@$.........
+........,,,,P@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@D%@@@@J+%@@@@@@@@@@@@@@@@@@@@@@@@$.........
+........$YY$P@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@JYD*D@@J+$J@@@@@@@@@P+PJ@@@@@@@@@@$.........
+.....$$.....P@@@@@@@@@@@@@@@@@@@@@@@@@@@@+PJ@@@@@@@@@@@J*D@JP@@@@D$*D@@@@@@@@D,%@@@@@@@@@@$.........
+.....Y$.....P@@@@@@@@@@@@@@@@@@@@@@@@@@J%*JP@@@@@@@@@@@**DJJ@@@@@@D**@@@@@@@@J+P@@@@@@@@@@$.........
+.....Y$.....P@@@@@@@@@@@@@@@@@@@@@@@@@JPJ@%*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%%@@@@@@@@@@$.........
+.....Y$.....P@@@@@@@@@@@@@@@@@@@@@@@@@@*%P%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@D*J@@@@@@@@@@@@@@$.........
+.....Y$.....P@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@J@JYPP@@@@@@@@@@@@@@$.........
+.....Y$.....P@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@P*+Y*D@@@D%D@@@@@@@@@$.........
+.....YY.....P@@@@@@@@@@@@@@@@@@@J@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@J%%@@@@J*$%%P@@@@@@@@$.........
+.....,,.$$$,P@@@@@@@@@@@@@@@@DD*,D@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@+P*D%J@@@@@@@@$.........
+........,,,,P@@@@@@@@@@@@@@@P%%YD@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@JD@@@@@@@@@@@@$.........
+............P@@@@@@@@@@@@@@@+JPJ@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@$.........
+............P@@@@@@@@@@@@@@@%*J@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@$.........
+............P@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@$.........
+............P@@@@%J@@D*+%@@@@@@@@@@@@@@@@@@@@@@@@%%%J@@@@@@@@@@@@@@@@@@%**%@@@@@@@@@@@@@@@$.........
+............P@@@@P+Y+P%*J@@@@@@@@@@@@@@@@@@@@@@@@%PDPJ@@D@@@@@@@@@@@@@+%JDP+%@@@@@@@@@@@@@$.........
+............P@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%%*J@@+%%DJ@@@@@@@@@%D%DJDD@@@@@@@@@@@@@$.........
+........,,,,P@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@***%@@%D@J+J@@@@@@@@@@@@@@@@@@@@@@@@@@@@$.........
+........$$$$P@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@D%%*@@@DD@@@D*J**@@@@@@@D%DJJ*%@@@@@@@@****%@@$.........
+............P@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%PPP%@@@@@@@@@JDD@@@@@@@J+@JD%P*@@@@@%+PP%%%*@@$.........
+............P@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@DP*@@@@@@@@@@@@@@@@@@@@@@%*DD%%@@@@@@@DD@@@@@@@$.........
+............P@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@D$J@@@@@@@@@@@@@@@@@@@@@@@@@@@@D*%%PJJ+%%*@@@@@$.........
+............P@@@@@@@@@@%PD@@@@@@@@@@@@@@@@@@J@@@@@@@@@@@@@@@@@@@@@@@@@@@@@+D@DPJ@D%D*Y%@@@$.........
+............P@@@@@@@@@@D+$D@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@J+J+@@@@@@@%+D@@$.........
+............*J*D@@@@@@@@@P**P@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@D+D@@@@@@@@@@@@$.........
+............*J*YPP%**@@@@@D%D@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@$.........
+..........,$PJJJ%P*P%JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ$.........
+..........,,Y,,,,,,,,,,,,,$$Y$,,,,,,,,,,,$YYY,,,,,,,,,,,,YYY,,,,,,,,,,,,YYY$,,,,,,,,,,,$YY$.........
+............,.............,,,,...........,,,,,.......,..,,,,............,,,,...........,,,,.........
+.............................................YYY$$$$YY$$$,..........................................
+....................................................................................................
+....................................................................................................
+....................................................................................................
+  ____                            _         _       _   _                 _ _
+ / ___|___  _ __   __ _ _ __ __ _| |_ _   _| | __ _| |_(_) ___  _ __  ___| | |
+| |   / _ \| '_ \ / _` | '__/ _` | __| | | | |/ _` | __| |/ _ \| '_ \/ __| | |
+| |__| (_) | | | | (_| | | | (_| | |_| |_| | | (_| | |_| | (_) | | | \__ \_|_|
+ \____\___/|_| |_|\__, |_|  \__,_|\__|\__,_|_|\__,_|\__|_|\___/|_| |_|___(_|_)
+                  |___/
+```
+
+:::
+
+::: {.notes}
+You create the `surprise` environment, making sure to include Python 3.10 in the installation. Again I've shown the
+command line version to switch branches using Git but you can use GitKraken to do this if you don't have Git installed
+at the command line.
+
+Next you make sure TopoStats is installed but no additional dependencies are required here.
+
+You should find if you try running the test suite that it fails saying `pytest` is not found. This is because you
+_didn't_ install the test dependencies that are required to run the test suite.
+
+Finally you `run_topostats` and on this branch I have changed the code so that instead of running properly it prints out
+this message which is some fancy ASCII-art for TopoStats, the test-image called `minicircle.spm` that we use in
+development and a `congratulations!!` message.
+
+This is another non-sensical example but hopefully demonstrates how Git branches can be used to change the code base
+without affecting the `main`/`master` branch.
+
+:::
+
+## Exercise 3 - Notebooks
 
 1. Create a new Conda environment called `notebooks`.
 2. Checkout `ns-rse/504-plotting-arrays` branch.
 3. Install TopoStats with `notebooks` dependencies.
 4. Run TopoStats.
 5. Start a Notebook
+
+## Exercise 3 - Notebooks (Solution)
+
+```{.bash}
+conda create --name test python=3.10
+git checkout topostats-test # This is the commandline version, use GitKraken to switch
+pip install -e .[tests]  # Install the test dependencies as well
+jupyter notebook
+```
 
 ## Jupyter Notebooks
 
@@ -728,6 +873,7 @@ with all package versions included.
 + Walk-through for running TopoStats (`00-Walthrough-minicircle.ipynb`)
 + Summary Statistics and Plotting (`02-Summary-statistics-and-plots.ipynb`)
 + Plotting Scans (`03-Plotting-scans.ipynb`)
++ Try going through them to process images (some require `run_topostats`) to have been run.
 
 ## Any Questions?
 
